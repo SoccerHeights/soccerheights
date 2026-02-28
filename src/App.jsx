@@ -1096,8 +1096,18 @@ export default function App() {
       {tab==="schedule"&&season&&<div>
         <h2 style={{fontSize:20,margin:"0 0 16px",color:"#fff",fontFamily:"'Bricolage Grotesque',sans-serif"}}>Schedule — {season.name}</h2>
         {isAdmin&&<><ExcelUploadGames season={season} onImport={(gs,es)=>{updSeason(s=>({...s,games:[...s.games,...gs]}));flash(es.length?`Imported ${gs.length} games. Issues:\n${es.slice(0,10).join("\n")}${es.length>10?"\n...and "+(es.length-10)+" more":""}`:` Imported ${gs.length} games!`);}}/><div style={{display:"flex",justifyContent:"flex-end",marginBottom:16}}><Btn icon="plus" sz="sm" onClick={()=>{setForm({h:"",a:"",date:"",time:"",loc:"",phase:"group"});setModal("addGame");}}>Add Game</Btn></div></>}
-        {(()=>{const sorted=sortGames(season.games);const grp=sorted.filter(g=>(g.phase||"group")==="group");const po=sorted.filter(g=>g.phase==="playoff");
-          return <>{grp.map(g=><GameCard key={g.id} g={g} admin={isAdmin}/>)}{po.length>0&&<><h3 style={{fontSize:16,margin:"24px 0 12px",color:"#FFB300",fontFamily:"'Bricolage Grotesque',sans-serif"}}>🏆 Playoffs</h3>{po.map(g=><GameCard key={g.id} g={g} admin={isAdmin}/>)}</>}{sorted.length===0&&<Card><p style={{color:"#8892a4",textAlign:"center",margin:0}}>No games yet.</p></Card>}</>;})()}
+        {(()=>{
+          const allGames=season.games;
+          const upcoming=allGames.filter(g=>!g.done).sort((a,b)=>{const dd=new Date(a.date)-new Date(b.date);return dd!==0?dd:timeToMin(a.time)-timeToMin(b.time);});
+          const completed=allGames.filter(g=>g.done).sort((a,b)=>{const dd=new Date(b.date)-new Date(a.date);return dd!==0?dd:timeToMin(b.time)-timeToMin(a.time);});
+          const upGrp=upcoming.filter(g=>(g.phase||"group")==="group");
+          const upPo=upcoming.filter(g=>g.phase==="playoff");
+          const compGrp=completed.filter(g=>(g.phase||"group")==="group");
+          const compPo=completed.filter(g=>g.phase==="playoff");
+          const secStyle={fontSize:16,margin:"24px 0 12px",fontFamily:"'Bricolage Grotesque',sans-serif"};
+          return <>{upcoming.length>0&&<><h3 style={{...secStyle,color:"#00C896"}}>Upcoming Games</h3>{upPo.length>0&&<><h4 style={{fontSize:14,margin:"16px 0 8px",color:"#FFB300"}}>🏆 Playoffs</h4>{upPo.map(g=><GameCard key={g.id} g={g} admin={isAdmin}/>)}</>}{upGrp.map(g=><GameCard key={g.id} g={g} admin={isAdmin}/>)}</>}
+          {completed.length>0&&<><h3 style={{...secStyle,color:"#8892a4"}}>Completed Games</h3>{compPo.length>0&&<><h4 style={{fontSize:14,margin:"16px 0 8px",color:"#FFB300"}}>🏆 Playoffs</h4>{compPo.map(g=><GameCard key={g.id} g={g} admin={isAdmin}/>)}</>}{compGrp.map(g=><GameCard key={g.id} g={g} admin={isAdmin}/>)}</>}
+          {allGames.length===0&&<Card><p style={{color:"#8892a4",textAlign:"center",margin:0}}>No games yet.</p></Card>}</>;})()}
       </div>}
 
       {tab==="rules"&&<div>
