@@ -1024,7 +1024,7 @@ export default function App() {
   useEffect(()=>{(async()=>{const s=await loadData();if(s){setData(s);}else{const d=DEFAULT();setData(d);await saveData(d);}setLoading(false);})();},[]);
 
   const season=data?.seasons.find(s=>s.id===selSeason)||data?.seasons.find(s=>s.status==="active")||data?.seasons[0];
-  const upd=fn=>{const u=fn(data);setData(u);saveData(u);};
+  const upd=fn=>{const scrollY=window.scrollY;const u=fn(data);setData(u);saveData(u);requestAnimationFrame(()=>window.scrollTo(0,scrollY));};
   const updSeason=fn=>upd(d=>({...d,seasons:d.seasons.map(s=>s.id===season.id?fn(s):s)}));
   const gmailCompose=(to,su,bo)=>window.open(`https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(to)}&su=${encodeURIComponent(su)}&body=${encodeURIComponent(bo)}`,"_blank");
   const buildInvite=(em,tn,rl)=>{const t=data.inviteTemplate||{subject:"",body:""};return{subj:t.subject,body:t.body.replace(/\{\{role\}\}/g,rl||"member").replace(/\{\{team\}\}/g,tn||"the league").replace(/\{\{link\}\}/g,data.appUrl||"")};};
