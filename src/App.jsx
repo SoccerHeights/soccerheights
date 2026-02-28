@@ -1019,7 +1019,7 @@ const ExcelUploadTeams = ({onImport,existingNames}) => {
 export default function App() {
   const [data,setData]=useState(null);const[loading,setLoading]=useState(true);const[role,setRole]=useState(null);
   const[pw,setPw]=useState("");const[err,setErr]=useState("");const[tab,setTab]=useState("standings");
-  const[selSeason,setSelSeason]=useState(null);const[modal,setModal]=useState(null);const[form,setForm]=useState({});const[msg,setMsg]=useState("");
+  const[selSeason,setSelSeason]=useState(null);const[modal,setModal]=useState(null);const[form,setForm]=useState({});const[msg,setMsg]=useState("");const[teamFilter,setTeamFilter]=useState("");
 
   useEffect(()=>{(async()=>{const s=await loadData();if(s){setData(s);}else{const d=DEFAULT();setData(d);await saveData(d);}setLoading(false);})();},[]);
 
@@ -1083,7 +1083,7 @@ export default function App() {
         <h2 style={{fontSize:20,margin:"0 0 16px",color:"#fff",fontFamily:"'Bricolage Grotesque',sans-serif"}}>Seasons</h2>
         {isAdmin&&<div style={{display:"flex",justifyContent:"flex-end",marginBottom:12}}><Btn icon="plus" sz="sm" onClick={()=>{setForm({name:"",start:"",end:""});setModal("newSeason");}}>New Season</Btn></div>}
         <ChampTally seasons={data.seasons} adminView={isAdmin}/>
-        <SeasonPicker seasons={data.seasons} current={season?.id} onSelect={id=>{setSelSeason(id);setTab("standings");}} admin={isAdmin} onStatus={(id,st)=>upd(d=>({...d,seasons:d.seasons.map(x=>x.id===id?{...x,status:st}:x)}))} onDelete={id=>{upd(d=>({...d,seasons:d.seasons.filter(x=>x.id!==id)}));}}/>
+        <SeasonPicker seasons={data.seasons} current={season?.id} onSelect={id=>{setSelSeason(id);setTab("standings");setTeamFilter("");}} admin={isAdmin} onStatus={(id,st)=>upd(d=>({...d,seasons:d.seasons.map(x=>x.id===id?{...x,status:st}:x)}))} onDelete={id=>{upd(d=>({...d,seasons:d.seasons.filter(x=>x.id!==id)}));}}/>
       </div>}
 
       {tab==="standings"&&season&&<div>
@@ -1095,9 +1095,10 @@ export default function App() {
 
       {tab==="schedule"&&season&&<div>
         <h2 style={{fontSize:20,margin:"0 0 16px",color:"#fff",fontFamily:"'Bricolage Grotesque',sans-serif"}}>Schedule — {season.name}</h2>
+        <div style={{marginBottom:16}}><select value={teamFilter} onChange={e=>{setTeamFilter(e.target.value);}} style={{width:"100%",padding:"10px 12px",borderRadius:10,border:"1px solid rgba(255,255,255,0.1)",background:"#1a1f2e",color:teamFilter?"#fff":"#8892a4",fontSize:14,fontFamily:"'DM Sans',sans-serif",cursor:"pointer"}}><option value="">All Teams</option>{season.teams.slice().sort((a,b)=>a.name.localeCompare(b.name)).map(t=><option key={t.id} value={t.id}>{t.name}</option>)}</select></div>
         {isAdmin&&<><ExcelUploadGames season={season} onImport={(gs,es)=>{updSeason(s=>({...s,games:[...s.games,...gs]}));flash(es.length?`Imported ${gs.length} games. Issues:\n${es.slice(0,10).join("\n")}${es.length>10?"\n...and "+(es.length-10)+" more":""}`:` Imported ${gs.length} games!`);}}/><div style={{display:"flex",justifyContent:"flex-end",marginBottom:16}}><Btn icon="plus" sz="sm" onClick={()=>{setForm({h:"",a:"",date:"",time:"",loc:"",phase:"group"});setModal("addGame");}}>Add Game</Btn></div></>}
         {(()=>{
-          const allGames=season.games;
+          const allGames=teamFilter?season.games.filter(g=>g.h===teamFilter||g.a===teamFilter):season.games;
           const upcoming=allGames.filter(g=>!g.done).sort((a,b)=>{const dd=new Date(a.date)-new Date(b.date);return dd!==0?dd:timeToMin(a.time)-timeToMin(b.time);});
           const completed=allGames.filter(g=>g.done).sort((a,b)=>{const dd=new Date(b.date)-new Date(a.date);return dd!==0?dd:timeToMin(b.time)-timeToMin(a.time);});
           const upGrp=upcoming.filter(g=>(g.phase||"group")==="group");
