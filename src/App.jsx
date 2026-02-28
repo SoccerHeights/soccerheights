@@ -66,7 +66,7 @@ function historicalSeasons() {
     {id:"w21-pu",name:"Purple",color:"#9C27B0",cap:null,group:""},
     {id:"w21-yl",name:"Yellow",color:"#F9A825",cap:null,group:""},
     {id:"w21-gy",name:"Gray",color:"#78909C",cap:null,group:""},
-    {id:"w21-gn",name:"Green",color:"#4CAF50",cap:null,group:""},
+    {id:"w21-gn",name:"Bdn Green",color:"#4CAF50",cap:null,group:""},
     {id:"w21-rd",name:"Red",color:"#C62828",cap:null,group:""},
     {id:"w21-or",name:"Orange",color:"#EF6C00",cap:null,group:""},
     {id:"w21-pk",name:"Pink",color:"#E91E63",cap:null,group:""},
@@ -75,16 +75,16 @@ function historicalSeasons() {
   const w21g=(id,h,a,d,t,hs,as,ph,v)=>({id,h:w21n(h),a:w21n(a),date:d,time:t,loc:"James J Walker",hs,as,done:true,phase:ph||"group",videoUrl:v||""});
   const w21G=[
     w21g("w21-1","White","Gray","2021-12-05","10:30 AM",2,6),w21g("w21-2","Yellow","Red","2021-12-05","11:15 AM",4,2),w21g("w21-3","Orange","AR Blue","2021-12-05","12:00 PM",1,10),w21g("w21-4","Pink","Purple","2021-12-05","12:45 PM",1,10),
-    w21g("w21-5","White","Orange","2021-12-12","10:30 AM",5,3),w21g("w21-6","Gray","Pink","2021-12-12","11:15 AM",3,5),w21g("w21-7","AR Blue","Green","2021-12-12","12:00 PM",9,2),w21g("w21-8","Yellow","Purple","2021-12-12","12:45 PM",3,5),
-    w21g("w21-9","Red","Orange","2022-01-09","10:30 AM",5,5),w21g("w21-10","Yellow","Green","2022-01-09","11:15 AM",3,6),w21g("w21-11","White","Purple","2022-01-09","12:00 PM",5,7),w21g("w21-12","Gray","AR Blue","2022-01-09","12:45 PM",5,7),
-    w21g("w21-13","Purple","Green","2022-01-16","10:30 AM",7,4),w21g("w21-14","White","Yellow","2022-01-16","11:15 AM",5,3),w21g("w21-15","Gray","Red","2022-01-16","12:00 PM",4,6),w21g("w21-16","Pink","Orange","2022-01-16","12:45 PM",1,6),
-    w21g("w21-17","Gray","Orange","2022-01-23","10:30 AM",3,2),w21g("w21-18","Red","Green","2022-01-23","11:15 AM",2,7),w21g("w21-19","Yellow","AR Blue","2022-01-23","12:00 PM",7,3),w21g("w21-20","White","Pink","2022-01-23","12:45 PM",8,2),
-    w21g("w21-21","Gray","Yellow","2022-01-30","10:30 AM",2,2),w21g("w21-22","Pink","Green","2022-01-30","11:15 AM",3,6),w21g("w21-23","Purple","AR Blue","2022-01-30","12:00 PM",4,9),w21g("w21-24","White","Red","2022-01-30","12:45 PM",6,3),
-    w21g("w21-25","Yellow","Pink","2022-02-06","10:30 AM",9,2),w21g("w21-26","Gray","Green","2022-02-06","11:15 AM",6,3),w21g("w21-27","Red","AR Blue","2022-02-06","12:00 PM",3,5),w21g("w21-28","Purple","Orange","2022-02-06","12:45 PM",7,4),
-    w21g("w21-29","Red","Purple","2022-02-13","10:30 AM",3,0),w21g("w21-30","White","Green","2022-02-13","11:15 AM",5,5),w21g("w21-31","Yellow","Orange","2022-02-13","12:00 PM",3,1),w21g("w21-32","Pink","AR Blue","2022-02-13","12:45 PM",4,5),
-    w21g("w21-33","Orange","Green","2022-02-20","10:30 AM",4,6),w21g("w21-34","Gray","Purple","2022-02-20","11:15 AM",7,4),w21g("w21-35","Red","Pink","2022-02-20","12:00 PM",8,1),w21g("w21-36","White","AR Blue","2022-02-20","12:45 PM",3,0),
-    w21g("w21-q1","White","Red","2022-02-27","10:30 AM",2,5,"playoff"),w21g("w21-q2","Yellow","Gray","2022-02-27","11:15 AM",3,2,"playoff"),w21g("w21-q3","Purple","Green","2022-02-27","12:00 PM",4,5,"playoff"),w21g("w21-q4","AR Blue","Orange","2022-02-27","12:45 PM",2,1,"playoff"),
-    w21g("w21-s1","Yellow","Green","2022-03-06","10:30 AM",4,1,"playoff"),w21g("w21-s2","Red","AR Blue","2022-03-06","11:15 AM",4,5,"playoff"),
+    w21g("w21-5","White","Orange","2021-12-12","10:30 AM",5,3),w21g("w21-6","Gray","Pink","2021-12-12","11:15 AM",3,5),w21g("w21-7","AR Blue","Bdn Green","2021-12-12","12:00 PM",9,2),w21g("w21-8","Yellow","Purple","2021-12-12","12:45 PM",3,5),
+    w21g("w21-9","Red","Orange","2022-01-09","10:30 AM",5,5),w21g("w21-10","Yellow","Bdn Green","2022-01-09","11:15 AM",3,6),w21g("w21-11","White","Purple","2022-01-09","12:00 PM",5,7),w21g("w21-12","Gray","AR Blue","2022-01-09","12:45 PM",5,7),
+    w21g("w21-13","Purple","Bdn Green","2022-01-16","10:30 AM",7,4),w21g("w21-14","White","Yellow","2022-01-16","11:15 AM",5,3),w21g("w21-15","Gray","Red","2022-01-16","12:00 PM",4,6),w21g("w21-16","Pink","Orange","2022-01-16","12:45 PM",1,6),
+    w21g("w21-17","Gray","Orange","2022-01-23","10:30 AM",3,2),w21g("w21-18","Red","Bdn Green","2022-01-23","11:15 AM",2,7),w21g("w21-19","Yellow","AR Blue","2022-01-23","12:00 PM",7,3),w21g("w21-20","White","Pink","2022-01-23","12:45 PM",8,2),
+    w21g("w21-21","Gray","Yellow","2022-01-30","10:30 AM",2,2),w21g("w21-22","Pink","Bdn Green","2022-01-30","11:15 AM",3,6),w21g("w21-23","Purple","AR Blue","2022-01-30","12:00 PM",4,9),w21g("w21-24","White","Red","2022-01-30","12:45 PM",6,3),
+    w21g("w21-25","Yellow","Pink","2022-02-06","10:30 AM",9,2),w21g("w21-26","Gray","Bdn Green","2022-02-06","11:15 AM",6,3),w21g("w21-27","Red","AR Blue","2022-02-06","12:00 PM",3,5),w21g("w21-28","Purple","Orange","2022-02-06","12:45 PM",7,4),
+    w21g("w21-29","Red","Purple","2022-02-13","10:30 AM",3,0),w21g("w21-30","White","Bdn Green","2022-02-13","11:15 AM",5,5),w21g("w21-31","Yellow","Orange","2022-02-13","12:00 PM",3,1),w21g("w21-32","Pink","AR Blue","2022-02-13","12:45 PM",4,5),
+    w21g("w21-33","Orange","Bdn Green","2022-02-20","10:30 AM",4,6),w21g("w21-34","Gray","Purple","2022-02-20","11:15 AM",7,4),w21g("w21-35","Red","Pink","2022-02-20","12:00 PM",8,1),w21g("w21-36","White","AR Blue","2022-02-20","12:45 PM",3,0),
+    w21g("w21-q1","White","Red","2022-02-27","10:30 AM",2,5,"playoff"),w21g("w21-q2","Yellow","Gray","2022-02-27","11:15 AM",3,2,"playoff"),w21g("w21-q3","Purple","Bdn Green","2022-02-27","12:00 PM",4,5,"playoff"),w21g("w21-q4","AR Blue","Orange","2022-02-27","12:45 PM",2,1,"playoff"),
+    w21g("w21-s1","Yellow","Bdn Green","2022-03-06","10:30 AM",4,1,"playoff"),w21g("w21-s2","Red","AR Blue","2022-03-06","11:15 AM",4,5,"playoff"),
     w21g("w21-f","Yellow","AR Blue","2022-03-13","10:30 AM",4,6,"playoff"),
   ];
 
@@ -163,7 +163,7 @@ function historicalSeasons() {
     {id:"fa22-bp",name:"BR Purple",color:"#8E24AA",cap:null,group:""},
     {id:"fa22-rd",name:"Red",color:"#C62828",cap:null,group:""},
     {id:"fa22-gy",name:"Gray",color:"#78909C",cap:null,group:""},
-    {id:"fa22-gn",name:"Green",color:"#4CAF50",cap:null,group:""},
+    {id:"fa22-gn",name:"Bdn Green",color:"#4CAF50",cap:null,group:""},
     {id:"fa22-yl",name:"Yellow",color:"#F9A825",cap:null,group:""},
     {id:"fa22-bk",name:"Black",color:"#212121",cap:null,group:""},
     {id:"fa22-pk",name:"Pink",color:"#E91E63",cap:null,group:""},
@@ -171,16 +171,16 @@ function historicalSeasons() {
   const fa22n=n=>fa22T.find(x=>x.name===n)?.id;
   const fa22g=(id,h,a,d,t,hs,as,ph,v)=>({id,h:fa22n(h),a:fa22n(a),date:d,time:t,loc:"James J Walker",hs,as,done:true,phase:ph||"group",videoUrl:v||""});
   const fa22G=[
-    fa22g("fa22-1","Orange","Pink","2022-09-11","10:50 AM",10,2),fa22g("fa22-2","Gray","Green","2022-09-11","11:35 AM",5,8),fa22g("fa22-3","Black","Yellow","2022-09-11","12:20 PM",5,5),fa22g("fa22-4","Red","BR Purple","2022-09-11","1:05 PM",6,4),
-    fa22g("fa22-5","White","Green","2022-09-18","10:50 AM",6,4),fa22g("fa22-6","Red","Orange","2022-09-18","11:35 AM",2,4),fa22g("fa22-7","Gray","BR Purple","2022-09-18","12:20 PM",5,5),fa22g("fa22-8","Black","AR Blue","2022-09-18","1:05 PM",1,6),
-    fa22g("fa22-9","Yellow","Orange","2022-09-25","10:50 AM",4,4),fa22g("fa22-10","Black","Green","2022-09-25","11:35 AM",7,3),fa22g("fa22-11","AR Blue","Pink","2022-09-25","12:20 PM",6,5),fa22g("fa22-12","White","BR Purple","2022-09-25","1:05 PM",4,2),
-    fa22g("fa22-13","Gray","Red","2022-10-02","10:50 AM",3,2),fa22g("fa22-14","Pink","Green","2022-10-02","11:35 AM",4,8),fa22g("fa22-15","Black","White","2022-10-02","12:20 PM",5,4),fa22g("fa22-16","Yellow","AR Blue","2022-10-02","1:05 PM",5,7),
+    fa22g("fa22-1","Orange","Pink","2022-09-11","10:50 AM",10,2),fa22g("fa22-2","Gray","Bdn Green","2022-09-11","11:35 AM",5,8),fa22g("fa22-3","Black","Yellow","2022-09-11","12:20 PM",5,5),fa22g("fa22-4","Red","BR Purple","2022-09-11","1:05 PM",6,4),
+    fa22g("fa22-5","White","Bdn Green","2022-09-18","10:50 AM",6,4),fa22g("fa22-6","Red","Orange","2022-09-18","11:35 AM",2,4),fa22g("fa22-7","Gray","BR Purple","2022-09-18","12:20 PM",5,5),fa22g("fa22-8","Black","AR Blue","2022-09-18","1:05 PM",1,6),
+    fa22g("fa22-9","Yellow","Orange","2022-09-25","10:50 AM",4,4),fa22g("fa22-10","Black","Bdn Green","2022-09-25","11:35 AM",7,3),fa22g("fa22-11","AR Blue","Pink","2022-09-25","12:20 PM",6,5),fa22g("fa22-12","White","BR Purple","2022-09-25","1:05 PM",4,2),
+    fa22g("fa22-13","Gray","Red","2022-10-02","10:50 AM",3,2),fa22g("fa22-14","Pink","Bdn Green","2022-10-02","11:35 AM",4,8),fa22g("fa22-15","Black","White","2022-10-02","12:20 PM",5,4),fa22g("fa22-16","Yellow","AR Blue","2022-10-02","1:05 PM",5,7),
     fa22g("fa22-17","BR Purple","Orange","2022-10-08","11:30 AM",3,4),fa22g("fa22-18","Black","Pink","2022-10-08","12:15 PM",3,5),
-    fa22g("fa22-19","Red","Yellow","2022-10-09","10:50 AM",3,3),fa22g("fa22-20","White","Gray","2022-10-09","11:35 AM",3,4),fa22g("fa22-21","BR Purple","AR Blue","2022-10-09","12:20 PM",4,0),fa22g("fa22-22","Orange","Green","2022-10-09","1:05 PM",5,3),
-    fa22g("fa22-23","BR Purple","Green","2022-10-16","10:50 AM",13,3),fa22g("fa22-24","Orange","AR Blue","2022-10-16","11:35 AM",4,3),fa22g("fa22-25","Yellow","Pink","2022-10-16","12:20 PM",3,2),fa22g("fa22-26","Black","Gray","2022-10-16","1:05 PM",4,6),
-    fa22g("fa22-27","White","Pink","2022-10-23","10:50 AM",10,3),fa22g("fa22-28","Yellow","Green","2022-10-23","11:35 AM",5,9),fa22g("fa22-29","Gray","Pink","2022-10-23","12:20 PM",5,5),fa22g("fa22-30","Black","Red","2022-10-23","1:05 PM",2,8),
-    fa22g("fa22-31","White","Yellow","2022-10-30","10:50 AM",7,1),fa22g("fa22-32","Red","Green","2022-10-30","11:35 AM",7,6),fa22g("fa22-33","Black","Orange","2022-10-30","12:20 PM",6,10),fa22g("fa22-34","Gray","Pink","2022-10-30","1:05 PM",5,4),
-    fa22g("fa22-35","Gray","Orange","2022-11-06","10:50 AM",5,6),fa22g("fa22-36","White","Red","2022-11-06","11:35 AM",6,6),fa22g("fa22-37","AR Blue","Green","2022-11-06","12:20 PM",8,5),fa22g("fa22-38","BR Purple","Pink","2022-11-06","1:05 PM",8,4),
+    fa22g("fa22-19","Red","Yellow","2022-10-09","10:50 AM",3,3),fa22g("fa22-20","White","Gray","2022-10-09","11:35 AM",3,4),fa22g("fa22-21","BR Purple","AR Blue","2022-10-09","12:20 PM",4,0),fa22g("fa22-22","Orange","Bdn Green","2022-10-09","1:05 PM",5,3),
+    fa22g("fa22-23","BR Purple","Bdn Green","2022-10-16","10:50 AM",13,3),fa22g("fa22-24","Orange","AR Blue","2022-10-16","11:35 AM",4,3),fa22g("fa22-25","Yellow","Pink","2022-10-16","12:20 PM",3,2),fa22g("fa22-26","Black","Gray","2022-10-16","1:05 PM",4,6),
+    fa22g("fa22-27","White","Pink","2022-10-23","10:50 AM",10,3),fa22g("fa22-28","Yellow","Bdn Green","2022-10-23","11:35 AM",5,9),fa22g("fa22-29","Gray","Pink","2022-10-23","12:20 PM",5,5),fa22g("fa22-30","Black","Red","2022-10-23","1:05 PM",2,8),
+    fa22g("fa22-31","White","Yellow","2022-10-30","10:50 AM",7,1),fa22g("fa22-32","Red","Bdn Green","2022-10-30","11:35 AM",7,6),fa22g("fa22-33","Black","Orange","2022-10-30","12:20 PM",6,10),fa22g("fa22-34","Gray","Pink","2022-10-30","1:05 PM",5,4),
+    fa22g("fa22-35","Gray","Orange","2022-11-06","10:50 AM",5,6),fa22g("fa22-36","White","Red","2022-11-06","11:35 AM",6,6),fa22g("fa22-37","AR Blue","Bdn Green","2022-11-06","12:20 PM",8,5),fa22g("fa22-38","BR Purple","Pink","2022-11-06","1:05 PM",8,4),
     fa22g("fa22-39","Yellow","BR Purple","2022-11-13","10:50 AM",2,3),fa22g("fa22-40","Orange","Red","2022-11-13","11:35 AM",9,2),fa22g("fa22-41","AR Blue","Gray","2022-11-13","12:20 PM",7,0),
     // W11 - Black 0-3 Purple (F)
     fa22g("fa22-42","Black","BR Purple","2022-11-20","10:50 AM",0,3),fa22g("fa22-43","White","Orange","2022-11-20","11:35 AM",5,2),fa22g("fa22-44","Red","AR Blue","2022-11-20","12:20 PM",3,3),
@@ -193,7 +193,7 @@ function historicalSeasons() {
   // ===== WINTER 2022-2023 =====
   // No groups. Champion: Green
   const w22T=[
-    {id:"w22-gn",name:"Green",color:"#4CAF50",cap:null,group:""},
+    {id:"w22-gn",name:"Bdn Green",color:"#4CAF50",cap:null,group:""},
     {id:"w22-pu",name:"Purple",color:"#9C27B0",cap:null,group:""},
     {id:"w22-yl",name:"Yellow",color:"#F9A825",cap:null,group:""},
     {id:"w22-bl",name:"AR Blue",color:"#1565C0",cap:null,group:""},
@@ -206,25 +206,25 @@ function historicalSeasons() {
   const w22n=n=>w22T.find(x=>x.name===n)?.id;
   const w22g=(id,h,a,d,t,hs,as,ph,v)=>({id,h:w22n(h),a:w22n(a),date:d,time:t,loc:"James J Walker",hs,as,done:true,phase:ph||"group",videoUrl:v||""});
   const w22G=[
-    w22g("w22-1","Green","Yellow","2022-12-03","12:05 PM",5,3),
+    w22g("w22-1","Bdn Green","Yellow","2022-12-03","12:05 PM",5,3),
     w22g("w22-2","Red","Gray","2022-12-04","12:05 PM",8,4),
-    w22g("w22-3","White","Green","2022-12-10","10:20 AM",3,5),w22g("w22-4","Purple","Yellow","2022-12-10","11:05 AM",3,4),w22g("w22-5","Gray","Black","2022-12-10","11:50 PM",3,3),
-    w22g("w22-6","Red","AR Blue","2022-12-17","10:20 AM",1,2),w22g("w22-7","White","Yellow","2022-12-17","11:05 AM",2,3),w22g("w22-8","Orange","Gray","2022-12-17","11:50 AM",3,4),w22g("w22-9","AR Blue","Green","2022-12-17","12:35 PM",5,5),
-    w22g("w22-10","Orange","Green","2023-01-07","11:20 AM",6,4),w22g("w22-11","AR Blue","Black","2023-01-07","12:05 PM",6,4),
+    w22g("w22-3","White","Bdn Green","2022-12-10","10:20 AM",3,5),w22g("w22-4","Purple","Yellow","2022-12-10","11:05 AM",3,4),w22g("w22-5","Gray","Black","2022-12-10","11:50 PM",3,3),
+    w22g("w22-6","Red","AR Blue","2022-12-17","10:20 AM",1,2),w22g("w22-7","White","Yellow","2022-12-17","11:05 AM",2,3),w22g("w22-8","Orange","Gray","2022-12-17","11:50 AM",3,4),w22g("w22-9","AR Blue","Bdn Green","2022-12-17","12:35 PM",5,5),
+    w22g("w22-10","Orange","Bdn Green","2023-01-07","11:20 AM",6,4),w22g("w22-11","AR Blue","Black","2023-01-07","12:05 PM",6,4),
     w22g("w22-12","White","Red","2023-01-08","10:20 AM",1,1),w22g("w22-13","Purple","Gray","2023-01-08","11:05 AM",4,2),
-    w22g("w22-14","Purple","Green","2023-01-15","10:20 AM",6,7),w22g("w22-15","White","Black","2023-01-15","11:05 AM",1,3),w22g("w22-16","Orange","Yellow","2023-01-15","11:50 AM",4,4),w22g("w22-17","AR Blue","Purple","2023-01-15","12:35 PM",2,6),
-    w22g("w22-18","Gray","Yellow","2023-01-21","10:20 AM",1,5),w22g("w22-19","Orange","White","2023-01-21","11:05 AM",2,4),w22g("w22-20","Green","Black","2023-01-21","11:50 AM",3,3),
+    w22g("w22-14","Purple","Bdn Green","2023-01-15","10:20 AM",6,7),w22g("w22-15","White","Black","2023-01-15","11:05 AM",1,3),w22g("w22-16","Orange","Yellow","2023-01-15","11:50 AM",4,4),w22g("w22-17","AR Blue","Purple","2023-01-15","12:35 PM",2,6),
+    w22g("w22-18","Gray","Yellow","2023-01-21","10:20 AM",1,5),w22g("w22-19","Orange","White","2023-01-21","11:05 AM",2,4),w22g("w22-20","Bdn Green","Black","2023-01-21","11:50 AM",3,3),
     w22g("w22-21","Orange","Red","2023-01-22","10:20 AM",4,4),w22g("w22-22","AR Blue","Yellow","2023-01-22","11:05 AM",2,3),w22g("w22-23","Purple","White","2023-01-22","11:50 AM",5,2),w22g("w22-24","Purple","Black","2023-01-22","12:35 PM",8,3),
-    w22g("w22-25","White","Gray","2023-01-28","10:20 AM",4,0),w22g("w22-26","Green","Black","2023-01-28","11:05 AM",3,3),w22g("w22-27","Orange","AR Blue","2023-01-28","11:50 AM",3,15),
+    w22g("w22-25","White","Gray","2023-01-28","10:20 AM",4,0),w22g("w22-26","Bdn Green","Black","2023-01-28","11:05 AM",3,3),w22g("w22-27","Orange","AR Blue","2023-01-28","11:50 AM",3,15),
     w22g("w22-28","Red","Yellow","2023-01-29","10:20 AM",1,2),w22g("w22-29","Purple","White","2023-01-29","11:05 AM",5,2),w22g("w22-30","Orange","Black","2023-01-29","11:50 AM",6,5),
     w22g("w22-31","Purple","Red","2023-02-04","10:20 AM",7,3),w22g("w22-32","AR Blue","White","2023-02-04","11:05 AM",6,6),w22g("w22-33","Black","Yellow","2023-02-04","11:50 AM",2,1),
-    w22g("w22-34","Red","Green","2023-02-05","10:20 AM",3,6),w22g("w22-35","Orange","Purple","2023-02-05","11:05 AM",1,1),
+    w22g("w22-34","Red","Bdn Green","2023-02-05","10:20 AM",3,6),w22g("w22-35","Orange","Purple","2023-02-05","11:05 AM",1,1),
     // QF
     w22g("w22-q1","Yellow","White","2023-02-12","10:20 AM",7,1,"playoff"),w22g("w22-q2","AR Blue","Black","2023-02-12","11:50 AM",8,2,"playoff"),
     // W10
-    w22g("w22-36","Green","AR Blue","2023-02-26","10:20 AM",7,6,"playoff"),w22g("w22-37","Purple","Yellow","2023-02-26","11:50 AM",4,2,"playoff"),
+    w22g("w22-36","Bdn Green","AR Blue","2023-02-26","10:20 AM",7,6,"playoff"),w22g("w22-37","Purple","Yellow","2023-02-26","11:50 AM",4,2,"playoff"),
     // Final
-    w22g("w22-f","Green","Purple","2023-03-05","11:00 AM",10,8,"playoff","https://app.veo.co/matches/20230305-final-green-purple-20cd6389/"),
+    w22g("w22-f","Bdn Green","Purple","2023-03-05","11:00 AM",10,8,"playoff","https://app.veo.co/matches/20230305-final-green-purple-20cd6389/"),
   ];
 
   // ===== SUMMER 2023 =====
@@ -233,7 +233,7 @@ function historicalSeasons() {
     {id:"su23-yl",name:"Yellow",color:"#F9A825",cap:null,group:""},
     {id:"su23-pu",name:"Purple",color:"#9C27B0",cap:null,group:""},
     {id:"su23-bl",name:"AR Blue",color:"#1565C0",cap:null,group:""},
-    {id:"su23-gn",name:"Green",color:"#4CAF50",cap:null,group:""},
+    {id:"su23-gn",name:"Bdn Green",color:"#4CAF50",cap:null,group:""},
     {id:"su23-rd",name:"Red",color:"#C62828",cap:null,group:""},
     {id:"su23-wh",name:"White",color:"#BDBDBD",cap:null,group:""},
     {id:"su23-gy",name:"Gray",color:"#78909C",cap:null,group:""},
@@ -244,25 +244,25 @@ function historicalSeasons() {
   const su23n=n=>su23T.find(x=>x.name===n)?.id;
   const su23g=(id,h,a,d,t,hs,as,ph,v)=>({id,h:su23n(h),a:su23n(a),date:d,time:t,loc:"James J Walker",hs,as,done:true,phase:ph||"group",videoUrl:v||""});
   const su23G=[
-    su23g("su23-1","Red","Gray","2023-06-24","10:20 AM",2,2),su23g("su23-2","Green","Purple","2023-06-25","10:20 AM",4,4),su23g("su23-3","Yellow","White","2023-06-25","11:05 AM",5,0),su23g("su23-4","Pink","Black","2023-06-25","12:20 PM",4,9),
-    su23g("su23-5","Pink","Green","2023-07-08","10:20 AM",0,3),su23g("su23-6","AR Blue","Yellow","2023-07-08","11:05 AM",3,7),
-    su23g("su23-7","Pink","Gray","2023-07-09","10:20 AM",1,2),su23g("su23-8","Orange","Purple","2023-07-09","11:05 AM",2,3),su23g("su23-9","Green","White","2023-07-09","12:20 PM",3,3),su23g("su23-10","Red","Black","2023-07-09","1:05 PM",3,2),
-    su23g("su23-11","Orange","Green","2023-07-15","10:20 AM",4,8),
+    su23g("su23-1","Red","Gray","2023-06-24","10:20 AM",2,2),su23g("su23-2","Bdn Green","Purple","2023-06-25","10:20 AM",4,4),su23g("su23-3","Yellow","White","2023-06-25","11:05 AM",5,0),su23g("su23-4","Pink","Black","2023-06-25","12:20 PM",4,9),
+    su23g("su23-5","Pink","Bdn Green","2023-07-08","10:20 AM",0,3),su23g("su23-6","AR Blue","Yellow","2023-07-08","11:05 AM",3,7),
+    su23g("su23-7","Pink","Gray","2023-07-09","10:20 AM",1,2),su23g("su23-8","Orange","Purple","2023-07-09","11:05 AM",2,3),su23g("su23-9","Bdn Green","White","2023-07-09","12:20 PM",3,3),su23g("su23-10","Red","Black","2023-07-09","1:05 PM",3,2),
+    su23g("su23-11","Orange","Bdn Green","2023-07-15","10:20 AM",4,8),
     su23g("su23-12","White","Black","2023-07-16","10:20 AM",6,4),su23g("su23-13","Gray","Purple","2023-07-16","11:05 AM",1,5),su23g("su23-14","Yellow","Pink","2023-07-16","12:20 PM",8,3),su23g("su23-15","AR Blue","Red","2023-07-16","1:05 PM",6,3),
     su23g("su23-16","Red","Pink","2023-07-22","10:20 AM",5,4),
-    su23g("su23-17","AR Blue","Green","2023-07-23","10:20 AM",6,4),su23g("su23-18","White","Purple","2023-07-23","11:05 AM",4,5),su23g("su23-19","Orange","Gray","2023-07-23","12:20 PM",5,2),su23g("su23-20","Yellow","Black","2023-07-23","1:05 PM",6,1),
-    su23g("su23-21","Red","Purple","2023-07-29","10:20 AM",1,3),su23g("su23-22","Yellow","Green","2023-07-29","11:05 AM",7,1),su23g("su23-23","AR Blue","Gray","2023-07-29","12:20 PM",6,3),su23g("su23-24","Orange","White","2023-07-29","1:05 PM",5,3),
+    su23g("su23-17","AR Blue","Bdn Green","2023-07-23","10:20 AM",6,4),su23g("su23-18","White","Purple","2023-07-23","11:05 AM",4,5),su23g("su23-19","Orange","Gray","2023-07-23","12:20 PM",5,2),su23g("su23-20","Yellow","Black","2023-07-23","1:05 PM",6,1),
+    su23g("su23-21","Red","Purple","2023-07-29","10:20 AM",1,3),su23g("su23-22","Yellow","Bdn Green","2023-07-29","11:05 AM",7,1),su23g("su23-23","AR Blue","Gray","2023-07-29","12:20 PM",6,3),su23g("su23-24","Orange","White","2023-07-29","1:05 PM",5,3),
     su23g("su23-25","Orange","Black","2023-08-05","10:20 AM",4,7),
     su23g("su23-26","Yellow","Purple","2023-08-06","10:20 AM",7,1),su23g("su23-27","Gray","White","2023-08-06","11:05 AM",3,1),su23g("su23-28","AR Blue","Red","2023-08-06","12:20 PM",7,2),su23g("su23-29","Orange","Pink","2023-08-06","1:05 PM",9,2),
-    su23g("su23-30","Pink","White","2023-08-12","10:20 AM",2,3),su23g("su23-31","Orange","Red","2023-08-12","11:05 AM",4,6),su23g("su23-32","Green","Black","2023-08-12","12:20 PM",5,6),su23g("su23-33","AR Blue","Purple","2023-08-12","1:05 PM",3,5),
+    su23g("su23-30","Pink","White","2023-08-12","10:20 AM",2,3),su23g("su23-31","Orange","Red","2023-08-12","11:05 AM",4,6),su23g("su23-32","Bdn Green","Black","2023-08-12","12:20 PM",5,6),su23g("su23-33","AR Blue","Purple","2023-08-12","1:05 PM",3,5),
     su23g("su23-34","Orange","AR Blue","2023-08-19","10:20 AM",0,3),su23g("su23-35","Purple","Black","2023-08-19","11:05 AM",6,2),
-    su23g("su23-36","Yellow","Pink","2023-08-20","10:20 AM",1,6),su23g("su23-37","Red","White","2023-08-20","11:05 AM",3,5),su23g("su23-38","AR Blue","Black","2023-08-20","12:20 PM",11,8),su23g("su23-39","Green","Gray","2023-08-20","1:05 PM",7,4),
+    su23g("su23-36","Yellow","Pink","2023-08-20","10:20 AM",1,6),su23g("su23-37","Red","White","2023-08-20","11:05 AM",3,5),su23g("su23-38","AR Blue","Black","2023-08-20","12:20 PM",11,8),su23g("su23-39","Bdn Green","Gray","2023-08-20","1:05 PM",7,4),
     su23g("su23-40","Pink","Purple","2023-08-26","10:20 AM",1,10),
-    su23g("su23-41","Gray","Black","2023-08-27","10:20 AM",3,0),su23g("su23-42","Orange","Yellow","2023-08-27","11:05 AM",2,11),su23g("su23-43","Red","Green","2023-08-27","12:20 PM",2,8),su23g("su23-44","AR Blue","White","2023-08-27","1:05 PM",8,4),
+    su23g("su23-41","Gray","Black","2023-08-27","10:20 AM",3,0),su23g("su23-42","Orange","Yellow","2023-08-27","11:05 AM",2,11),su23g("su23-43","Red","Bdn Green","2023-08-27","12:20 PM",2,8),su23g("su23-44","AR Blue","White","2023-08-27","1:05 PM",8,4),
     // Semi
-    su23g("su23-s1","Purple","AR Blue","2023-09-09","8:50 AM",6,4,"playoff"),su23g("su23-s2","Yellow","Green","2023-09-09","9:50 AM",4,6,"playoff"),
+    su23g("su23-s1","Purple","AR Blue","2023-09-09","8:50 AM",6,4,"playoff"),su23g("su23-s2","Yellow","Bdn Green","2023-09-09","9:50 AM",4,6,"playoff"),
     // Final
-    su23g("su23-f","Purple","Green","2023-09-16","9:30 AM",4,5,"playoff","https://app.veo.co/matches/20230916-purple-green-final-9f9c75d2/"),
+    su23g("su23-f","Purple","Bdn Green","2023-09-16","9:30 AM",4,5,"playoff","https://app.veo.co/matches/20230916-purple-green-final-9f9c75d2/"),
   ];
 
   // ===== FALL 2023 =====
@@ -272,7 +272,7 @@ function historicalSeasons() {
     {id:"fa23-bl",name:"AR Blue",color:"#1565C0",cap:null,group:"A"},
     {id:"fa23-gd",name:"Gold",color:"#FF8F00",cap:null,group:"A"},
     {id:"fa23-gy",name:"Gray",color:"#78909C",cap:null,group:"A"},
-    {id:"fa23-gn",name:"Green",color:"#4CAF50",cap:null,group:"A"},
+    {id:"fa23-gn",name:"Bdn Green",color:"#4CAF50",cap:null,group:"A"},
     {id:"fa23-rd",name:"Red",color:"#C62828",cap:null,group:"A"},
     {id:"fa23-bk",name:"Black",color:"#212121",cap:null,group:"A"},
     {id:"fa23-or",name:"Orange",color:"#EF6C00",cap:null,group:"B"},
@@ -287,21 +287,21 @@ function historicalSeasons() {
   const fa23G=[
     fa23g("fa23-1","Red","Black","2023-09-10","10:50 AM",2,4),fa23g("fa23-2","Pink","White","2023-09-10","11:35 AM",3,6),fa23g("fa23-3","Gray","Gold","2023-09-10","12:20 PM",5,5),fa23g("fa23-4","Bdn Green","Orange","2023-09-10","1:05 PM",3,4),
     fa23g("fa23-5","Red","Gray","2023-09-17","10:50 AM",6,3),fa23g("fa23-6","Orange","Yellow","2023-09-17","11:35 AM",3,2),fa23g("fa23-7","Pink","Bdn Green","2023-09-17","12:20 PM",3,0),fa23g("fa23-8","Gold","AR Blue","2023-09-17","1:05 PM",4,8),
-    fa23g("fa23-9","Black","Green","2023-09-24","10:50 AM",1,5),fa23g("fa23-10","White","BR Purple","2023-09-24","11:35 AM",5,4),fa23g("fa23-11","Red","AR Blue","2023-09-24","12:20 PM",6,7),fa23g("fa23-12","Pink","Yellow","2023-09-24","1:05 PM",1,12),
-    fa23g("fa23-13","White","Yellow","2023-10-01","10:50 AM",3,9),fa23g("fa23-14","Black","AR Blue","2023-10-01","11:35 AM",2,7),fa23g("fa23-15","Bdn Green","BR Purple","2023-10-01","12:20 PM",2,4),fa23g("fa23-16","Gray","Green","2023-10-01","1:05 PM",5,4),
+    fa23g("fa23-9","Black","Bdn Green","2023-09-24","10:50 AM",1,5),fa23g("fa23-10","White","BR Purple","2023-09-24","11:35 AM",5,4),fa23g("fa23-11","Red","AR Blue","2023-09-24","12:20 PM",6,7),fa23g("fa23-12","Pink","Yellow","2023-09-24","1:05 PM",1,12),
+    fa23g("fa23-13","White","Yellow","2023-10-01","10:50 AM",3,9),fa23g("fa23-14","Black","AR Blue","2023-10-01","11:35 AM",2,7),fa23g("fa23-15","Bdn Green","BR Purple","2023-10-01","12:20 PM",2,4),fa23g("fa23-16","Gray","Bdn Green","2023-10-01","1:05 PM",5,4),
     fa23g("fa23-17","White","Bdn Green","2023-10-07","11:20 AM",3,7),fa23g("fa23-18","Red","Gold","2023-10-07","12:05 PM",6,2),
-    fa23g("fa23-19","AR Blue","Green","2023-10-08","10:50 AM",2,7),fa23g("fa23-20","Pink","BR Purple","2023-10-08","11:35 AM",0,7),fa23g("fa23-21","Black","Gray","2023-10-08","12:20 PM",0,3),fa23g("fa23-22","Yellow","BR Purple","2023-10-08","1:05 PM",2,5),
-    fa23g("fa23-23","Red","Green","2023-10-15","10:50 AM",0,5),fa23g("fa23-24","Pink","BR Purple","2023-10-15","11:35 AM",0,7),fa23g("fa23-25","Black","Gold","2023-10-15","12:20 PM",2,4),fa23g("fa23-26","White","Orange","2023-10-15","1:05 PM",3,4),
-    fa23g("fa23-27","Gray","AR Blue","2023-10-22","10:50 AM",4,7),fa23g("fa23-28","Bdn Green","Yellow","2023-10-22","11:35 AM",2,5),fa23g("fa23-29","Gold","Green","2023-10-22","12:20 PM",7,3),fa23g("fa23-30","Orange","BR Purple","2023-10-22","1:05 PM",5,5),
+    fa23g("fa23-19","AR Blue","Bdn Green","2023-10-08","10:50 AM",2,7),fa23g("fa23-20","Pink","BR Purple","2023-10-08","11:35 AM",0,7),fa23g("fa23-21","Black","Gray","2023-10-08","12:20 PM",0,3),fa23g("fa23-22","Yellow","BR Purple","2023-10-08","1:05 PM",2,5),
+    fa23g("fa23-23","Red","Bdn Green","2023-10-15","10:50 AM",0,5),fa23g("fa23-24","Pink","BR Purple","2023-10-15","11:35 AM",0,7),fa23g("fa23-25","Black","Gold","2023-10-15","12:20 PM",2,4),fa23g("fa23-26","White","Orange","2023-10-15","1:05 PM",3,4),
+    fa23g("fa23-27","Gray","AR Blue","2023-10-22","10:50 AM",4,7),fa23g("fa23-28","Bdn Green","Yellow","2023-10-22","11:35 AM",2,5),fa23g("fa23-29","Gold","Bdn Green","2023-10-22","12:20 PM",7,3),fa23g("fa23-30","Orange","BR Purple","2023-10-22","1:05 PM",5,5),
     fa23g("fa23-31","Red","Bdn Green","2023-10-29","10:50 AM",3,5),fa23g("fa23-32","AR Blue","Orange","2023-10-29","11:35 AM",2,7),fa23g("fa23-33","Gold","White","2023-10-29","12:20 PM",5,1),fa23g("fa23-34","Gray","Yellow","2023-10-29","1:05 PM",2,8),
-    fa23g("fa23-35","Red","BR Purple","2023-11-05","10:50 AM",2,9),fa23g("fa23-36","Black","Orange","2023-11-05","11:35 AM",3,5),fa23g("fa23-37","Gold","Yellow","2023-11-05","12:20 PM",1,4),fa23g("fa23-38","Green","Bdn Green","2023-11-05","1:05 PM",2,3),
-    fa23g("fa23-39","Black","Orange","2023-11-12","10:50 AM",3,5),fa23g("fa23-40","BR Purple","Green","2023-11-12","11:35 AM",4,3),fa23g("fa23-41","AR Blue","Pink","2023-11-12","12:20 PM",4,4),fa23g("fa23-42","Gray","White","2023-11-12","1:05 PM",7,1),
+    fa23g("fa23-35","Red","BR Purple","2023-11-05","10:50 AM",2,9),fa23g("fa23-36","Black","Orange","2023-11-05","11:35 AM",3,5),fa23g("fa23-37","Gold","Yellow","2023-11-05","12:20 PM",1,4),fa23g("fa23-38","Bdn Green","Bdn Green","2023-11-05","1:05 PM",2,3),
+    fa23g("fa23-39","Black","Orange","2023-11-12","10:50 AM",3,5),fa23g("fa23-40","BR Purple","Bdn Green","2023-11-12","11:35 AM",4,3),fa23g("fa23-41","AR Blue","Pink","2023-11-12","12:20 PM",4,4),fa23g("fa23-42","Gray","White","2023-11-12","1:05 PM",7,1),
     // QF W11
-    fa23g("fa23-q1","Green","Orange","2023-11-19","10:50 AM",6,5,"playoff"),fa23g("fa23-q2","BR Purple","Gray","2023-11-19","11:35 AM",2,0,"playoff"),fa23g("fa23-q3","Gold","Yellow","2023-11-19","12:20 PM",5,4,"playoff"),fa23g("fa23-q4","AR Blue","Bdn Green","2023-11-19","1:05 PM",4,2,"playoff"),
+    fa23g("fa23-q1","Bdn Green","Orange","2023-11-19","10:50 AM",6,5,"playoff"),fa23g("fa23-q2","BR Purple","Gray","2023-11-19","11:35 AM",2,0,"playoff"),fa23g("fa23-q3","Gold","Yellow","2023-11-19","12:20 PM",5,4,"playoff"),fa23g("fa23-q4","AR Blue","Bdn Green","2023-11-19","1:05 PM",4,2,"playoff"),
     // Semi
-    fa23g("fa23-s1","BR Purple","AR Blue","2023-12-03","10:05 AM",0,0,"playoff"),fa23g("fa23-s2","Green","Gold","2023-12-03","11:05 AM",0,0,"playoff"),
+    fa23g("fa23-s1","BR Purple","AR Blue","2023-12-03","10:05 AM",0,0,"playoff"),fa23g("fa23-s2","Bdn Green","Gold","2023-12-03","11:05 AM",0,0,"playoff"),
     // Final - Green 5-8 Purple => BR Purple wins
-    fa23g("fa23-f","Green","BR Purple","2023-12-10","11:05 AM",5,8,"playoff","https://app.veo.co/matches/20231210-green-purple-final-fall-2023-a0c7622a/"),
+    fa23g("fa23-f","Bdn Green","BR Purple","2023-12-10","11:05 AM",5,8,"playoff","https://app.veo.co/matches/20231210-green-purple-final-fall-2023-a0c7622a/"),
   ];
 
   // ===== WINTER 2023-2024 =====
@@ -309,7 +309,7 @@ function historicalSeasons() {
   // Dark Green = Bdn Green
   const w23T=[
     {id:"w23-bp",name:"BR Purple",color:"#8E24AA",cap:null,group:"A"},
-    {id:"w23-gn",name:"Green",color:"#4CAF50",cap:null,group:"A"},
+    {id:"w23-gn",name:"Bdn Green",color:"#4CAF50",cap:null,group:"A"},
     {id:"w23-rd",name:"Red",color:"#C62828",cap:null,group:"A"},
     {id:"w23-bk",name:"Black",color:"#212121",cap:null,group:"A"},
     {id:"w23-gy",name:"Gray",color:"#78909C",cap:null,group:"A"},
@@ -328,23 +328,23 @@ function historicalSeasons() {
     w23g("w23-4","White","Orange","2023-12-03","10:45 AM",4,3),w23g("w23-5","AR Blue","Gold","2023-12-03","10:45 AM",4,0),
     w23g("w23-6","Red","Gray","2023-12-09","10:20 AM",3,1),w23g("w23-7","Black","Yellow","2023-12-09","11:05 AM",3,0),
     w23g("w23-8","Bdn Green","Orange","2023-12-16","10:20 AM",3,0),w23g("w23-9","Pink","AR Blue","2023-12-16","11:05 AM",4,7),
-    w23g("w23-10","Black","BR Purple","2023-12-17","10:20 AM",1,3),w23g("w23-11","Red","Green","2023-12-17","11:05 AM",2,4),
-    w23g("w23-12","White","AR Blue","2023-01-06","10:20 AM",4,5),w23g("w23-13","Black","Green","2023-01-06","11:05 AM",2,5),w23g("w23-14","Bdn Green","Gold","2023-01-06","11:50 AM",4,11),
+    w23g("w23-10","Black","BR Purple","2023-12-17","10:20 AM",1,3),w23g("w23-11","Red","Bdn Green","2023-12-17","11:05 AM",2,4),
+    w23g("w23-12","White","AR Blue","2023-01-06","10:20 AM",4,5),w23g("w23-13","Black","Bdn Green","2023-01-06","11:05 AM",2,5),w23g("w23-14","Bdn Green","Gold","2023-01-06","11:50 AM",4,11),
     w23g("w23-15","Gray","BR Purple","2023-01-07","10:20 AM",4,3),w23g("w23-16","Red","Yellow","2023-01-07","11:05 AM",4,2),w23g("w23-17","Pink","Orange","2023-01-07","11:50 AM",4,2),w23g("w23-18","Orange","AR Blue","2023-01-07","12:35 PM",3,0),
-    w23g("w23-19","Pink","Gold","2024-01-13","10:20 AM",7,6),w23g("w23-20","Green","BR Purple","2024-01-13","11:05 AM",3,6),w23g("w23-21","White","Bdn Green","2024-01-13","11:50 AM",1,1),
+    w23g("w23-19","Pink","Gold","2024-01-13","10:20 AM",7,6),w23g("w23-20","Bdn Green","BR Purple","2024-01-13","11:05 AM",3,6),w23g("w23-21","White","Bdn Green","2024-01-13","11:50 AM",1,1),
     w23g("w23-22","Gray","Red","2024-01-14","10:20 AM",3,2),w23g("w23-23","Black","Yellow","2024-01-14","11:05 AM",3,2),
-    w23g("w23-24","White","Gold","2024-01-21","10:20 AM",0,9),w23g("w23-25","Orange","Green","2024-01-21","11:05 AM",2,5),w23g("w23-26","Yellow","BR Purple","2024-01-21","11:50 AM",2,4),
-    w23g("w23-27","Red","BR Purple","2024-01-28","10:20 AM",3,2),w23g("w23-28","Gray","Green","2024-01-28","11:05 AM",3,8),
+    w23g("w23-24","White","Gold","2024-01-21","10:20 AM",0,9),w23g("w23-25","Orange","Bdn Green","2024-01-21","11:05 AM",2,5),w23g("w23-26","Yellow","BR Purple","2024-01-21","11:50 AM",2,4),
+    w23g("w23-27","Red","BR Purple","2024-01-28","10:20 AM",3,2),w23g("w23-28","Gray","Bdn Green","2024-01-28","11:05 AM",3,8),
     w23g("w23-29","Pink","Bdn Green","2024-01-28","11:50 AM",4,6),w23g("w23-30","AR Blue","Orange","2024-01-28","12:35 PM",0,8),
-    w23g("w23-31","Green","Black","2024-02-03","10:20 AM",6,5),w23g("w23-32","Red","AR Blue","2024-02-03","11:05 AM",0,6),w23g("w23-33","BR Purple","White","2024-02-03","11:50 AM",8,1),
+    w23g("w23-31","Bdn Green","Black","2024-02-03","10:20 AM",6,5),w23g("w23-32","Red","AR Blue","2024-02-03","11:05 AM",0,6),w23g("w23-33","BR Purple","White","2024-02-03","11:50 AM",8,1),
     w23g("w23-34","Yellow","Pink","2024-02-04","10:20 AM",3,7),w23g("w23-35","Black","Bdn Green","2024-02-04","11:05 AM",4,4),w23g("w23-36","Gray","Orange","2024-02-04","11:50 AM",4,3),w23g("w23-37","Red","Gold","2024-02-04","12:35 PM",6,7),
-    w23g("w23-38","Yellow","Green","2024-02-10","10:20 AM",3,3),w23g("w23-39","Black","Gray","2024-02-10","11:05 AM",3,2),
+    w23g("w23-38","Yellow","Bdn Green","2024-02-10","10:20 AM",3,3),w23g("w23-39","Black","Gray","2024-02-10","11:05 AM",3,2),
     w23g("w23-40","BR Purple","Bdn Green","2024-02-11","10:20 AM",4,3),w23g("w23-41","Gray","Gold","2024-02-11","11:05 AM",3,6),w23g("w23-42","Black","White","2024-02-11","11:50 AM",3,1),
     // QF
-    w23g("w23-q1","BR Purple","Bdn Green","2024-02-24","10:20 AM",8,1,"playoff"),w23g("w23-q2","Green","Pink","2024-02-24","11:20 AM",12,6,"playoff"),
+    w23g("w23-q1","BR Purple","Bdn Green","2024-02-24","10:20 AM",8,1,"playoff"),w23g("w23-q2","Bdn Green","Pink","2024-02-24","11:20 AM",12,6,"playoff"),
     w23g("w23-q3","Red","Gold","2024-02-25","10:20 AM",5,10,"playoff"),w23g("w23-q4","Black","AR Blue","2024-02-25","11:20 AM",2,8,"playoff"),
     // Semi
-    w23g("w23-s1","BR Purple","Gold","2024-03-03","10:20 AM",8,6,"playoff"),w23g("w23-s2","Green","AR Blue","2024-03-03","11:00 AM",2,6,"playoff"),
+    w23g("w23-s1","BR Purple","Gold","2024-03-03","10:20 AM",8,6,"playoff"),w23g("w23-s2","Bdn Green","AR Blue","2024-03-03","11:00 AM",2,6,"playoff"),
     // Final
     w23g("w23-f","BR Purple","AR Blue","2024-03-10","10:20 AM",1,0,"playoff","https://app.veo.co/matches/20240310-final-purple-blue-in-green-aba49681/"),
   ];
@@ -360,20 +360,262 @@ function historicalSeasons() {
     {id:"sp24-gy",name:"Gray",color:"#78909C",cap:null,group:""},
     {id:"sp24-bl",name:"AR Blue",color:"#1565C0",cap:null,group:""},
     {id:"sp24-bk",name:"Black",color:"#212121",cap:null,group:""},
-    {id:"sp24-gn",name:"Green",color:"#4CAF50",cap:null,group:""},
+    {id:"sp24-gn",name:"Bdn Green",color:"#4CAF50",cap:null,group:""},
   ];
   const sp24n=n=>sp24T.find(x=>x.name===n)?.id;
   const sp24g=(id,h,a,d,t,hs,as,loc,ph,v)=>({id,h:sp24n(h),a:sp24n(a),date:d,time:t,loc:loc||"Tanahey",hs,as,done:true,phase:ph||"group",videoUrl:v||""});
   const sp24G=[
-    sp24g("sp24-1","Gray","Yellow","2024-03-16","3:50 PM",9,5,"JJW"),sp24g("sp24-2","Green","BR Purple","2024-03-16","4:35 PM",0,9,"JJW"),sp24g("sp24-3","Red","Black","2024-03-16","5:20 PM",3,2,"JJW"),sp24g("sp24-4","Gold","AR Blue","2024-03-16","6:05 PM",7,6,"JJW"),
-    sp24g("sp24-5","Gray","BR Purple","2024-03-23","3:30 PM",2,6,"JJW"),sp24g("sp24-6","Yellow","Green","2024-03-23","4:10 PM",3,0,"JJW"),sp24g("sp24-7","Black","AR Blue","2024-03-23","4:50 PM",3,0,"JJW"),sp24g("sp24-8","Red","White","2024-03-23","5:30 PM",3,3,"JJW"),
-    sp24g("sp24-9","BR Purple","Red","2024-04-06","3:50 PM",1,5),sp24g("sp24-10","Gray","Green","2024-04-06","4:35 PM",1,1),sp24g("sp24-11","Yellow","Black","2024-04-06","5:20 PM",1,0),sp24g("sp24-12","Gold","White","2024-04-06","6:05 PM",4,0),
-    sp24g("sp24-13","Green","Black","2024-04-13","3:50 PM",1,2),sp24g("sp24-14","Yellow","White","2024-04-13","4:35 PM",1,4),sp24g("sp24-15","Gray","Gold","2024-04-13","5:20 PM",0,1),sp24g("sp24-16","Red","AR Blue","2024-04-13","6:05 PM",2,0),
-    sp24g("sp24-17","Gray","White","2024-04-20","3:50 PM",3,1),sp24g("sp24-18","Black","Gold","2024-04-20","4:35 PM",1,3),sp24g("sp24-19","Green","AR Blue","2024-04-20","5:20 PM",1,6),sp24g("sp24-20","Yellow","BR Purple","2024-04-20","6:05 PM",1,3),
-    sp24g("sp24-21","Green","Red","2024-04-27","3:50 PM",0,1),sp24g("sp24-22","AR Blue","White","2024-04-27","4:35 PM",0,0),sp24g("sp24-23","Black","BR Purple","2024-04-27","5:20 PM",1,0),sp24g("sp24-24","Yellow","Gold","2024-04-27","6:05 PM",0,7),
-    sp24g("sp24-25","BR Purple","Gold","2024-05-04","3:50 PM",3,2),sp24g("sp24-26","Gray","AR Blue","2024-05-04","4:35 PM",0,7),sp24g("sp24-27","Green","White","2024-05-04","5:20 PM",0,3),sp24g("sp24-28","Yellow","Red","2024-05-04","6:05 PM",3,1),
+    sp24g("sp24-1","Gray","Yellow","2024-03-16","3:50 PM",9,5,"JJW"),sp24g("sp24-2","Bdn Green","BR Purple","2024-03-16","4:35 PM",0,9,"JJW"),sp24g("sp24-3","Red","Black","2024-03-16","5:20 PM",3,2,"JJW"),sp24g("sp24-4","Gold","AR Blue","2024-03-16","6:05 PM",7,6,"JJW"),
+    sp24g("sp24-5","Gray","BR Purple","2024-03-23","3:30 PM",2,6,"JJW"),sp24g("sp24-6","Yellow","Bdn Green","2024-03-23","4:10 PM",3,0,"JJW"),sp24g("sp24-7","Black","AR Blue","2024-03-23","4:50 PM",3,0,"JJW"),sp24g("sp24-8","Red","White","2024-03-23","5:30 PM",3,3,"JJW"),
+    sp24g("sp24-9","BR Purple","Red","2024-04-06","3:50 PM",1,5),sp24g("sp24-10","Gray","Bdn Green","2024-04-06","4:35 PM",1,1),sp24g("sp24-11","Yellow","Black","2024-04-06","5:20 PM",1,0),sp24g("sp24-12","Gold","White","2024-04-06","6:05 PM",4,0),
+    sp24g("sp24-13","Bdn Green","Black","2024-04-13","3:50 PM",1,2),sp24g("sp24-14","Yellow","White","2024-04-13","4:35 PM",1,4),sp24g("sp24-15","Gray","Gold","2024-04-13","5:20 PM",0,1),sp24g("sp24-16","Red","AR Blue","2024-04-13","6:05 PM",2,0),
+    sp24g("sp24-17","Gray","White","2024-04-20","3:50 PM",3,1),sp24g("sp24-18","Black","Gold","2024-04-20","4:35 PM",1,3),sp24g("sp24-19","Bdn Green","AR Blue","2024-04-20","5:20 PM",1,6),sp24g("sp24-20","Yellow","BR Purple","2024-04-20","6:05 PM",1,3),
+    sp24g("sp24-21","Bdn Green","Red","2024-04-27","3:50 PM",0,1),sp24g("sp24-22","AR Blue","White","2024-04-27","4:35 PM",0,0),sp24g("sp24-23","Black","BR Purple","2024-04-27","5:20 PM",1,0),sp24g("sp24-24","Yellow","Gold","2024-04-27","6:05 PM",0,7),
+    sp24g("sp24-25","BR Purple","Gold","2024-05-04","3:50 PM",3,2),sp24g("sp24-26","Gray","AR Blue","2024-05-04","4:35 PM",0,7),sp24g("sp24-27","Bdn Green","White","2024-05-04","5:20 PM",0,3),sp24g("sp24-28","Yellow","Red","2024-05-04","6:05 PM",3,1),
     sp24g("sp24-29","Gray","Black","2024-05-11","3:50 PM",5,2),sp24g("sp24-30","Red","Gold","2024-05-11","4:35 PM",0,4),sp24g("sp24-31","Yellow","AR Blue","2024-05-11","5:20 PM",7,3),sp24g("sp24-32","BR Purple","White","2024-05-11","6:05 PM",0,3),
-    sp24g("sp24-33","Gray","Red","2024-05-18","3:50 PM",1,1),sp24g("sp24-34","Green","Gold","2024-05-18","4:35 PM",0,2),sp24g("sp24-35","Black","White","2024-05-18","5:20 PM",0,3),sp24g("sp24-36","BR Purple","AR Blue","2024-05-18","6:05 PM",1,5),
+    sp24g("sp24-33","Gray","Red","2024-05-18","3:50 PM",1,1),sp24g("sp24-34","Bdn Green","Gold","2024-05-18","4:35 PM",0,2),sp24g("sp24-35","Black","White","2024-05-18","5:20 PM",0,3),sp24g("sp24-36","BR Purple","AR Blue","2024-05-18","6:05 PM",1,5),
+    // QF
+    sp24g("sp24-q1","Gold","Black","2024-06-08","3:50 PM",2,0,"Tanahey","playoff"),sp24g("sp24-q2","White","AR Blue","2024-06-08","4:35 PM",0,1,"Tanahey","playoff"),sp24g("sp24-q3","Red","Gray","2024-06-08","5:20 PM",0,1,"Tanahey","playoff"),sp24g("sp24-q4","BR Purple","Yellow","2024-06-08","6:05 PM",3,1,"Tanahey","playoff"),
+    // Semi
+    sp24g("sp24-s1","Gold","Gray","2024-06-15","3:50 PM",1,0,"Tanahey","playoff"),sp24g("sp24-s2","BR Purple","AR Blue","2024-06-15","4:50 PM",1,0,"Tanahey","playoff"),
+    // Final
+    sp24g("sp24-f","BR Purple","Gold","2024-06-22","3:50 PM",1,0,"Tanahey","playoff","https://app.veo.co/matches/20240622-final-purple-gold3b85a200/"),
+  ];
+
+  // ===== SUMMER 2024 =====
+  // Groups A and B. Champion: BR Purple
+  const su24T=[
+    {id:"su24-bp",name:"BR Purple",color:"#8E24AA",cap:null,group:"A"},
+    {id:"su24-bk",name:"Black",color:"#212121",cap:null,group:"A"},
+    {id:"su24-or",name:"Orange",color:"#EF6C00",cap:null,group:"A"},
+    {id:"su24-rd",name:"Red",color:"#C62828",cap:null,group:"A"},
+    {id:"su24-ng",name:"Neon Green",color:"#64DD17",cap:null,group:"A"},
+    {id:"su24-yl",name:"Yellow",color:"#F9A825",cap:null,group:"B"},
+    {id:"su24-gd",name:"Gold",color:"#FF8F00",cap:null,group:"B"},
+    {id:"su24-bl",name:"AR Blue",color:"#1565C0",cap:null,group:"B"},
+    {id:"su24-bg",name:"Bdn Green",color:"#2E7D32",cap:null,group:"B"},
+    {id:"su24-wh",name:"White",color:"#BDBDBD",cap:null,group:"B"},
+  ];
+  const su24n=n=>su24T.find(x=>x.name===n)?.id;
+  const su24g=(id,h,a,d,t,hs,as,ph,v)=>({id,h:su24n(h),a:su24n(a),date:d,time:t,loc:"James J Walker",hs,as,done:true,phase:ph||"group",videoUrl:v||""});
+  const su24G=[
+    su24g("su24-1","Neon Green","Orange","2024-06-23","8:50 AM",2,6),su24g("su24-2","Red","Black","2024-06-23","9:35 AM",3,5),su24g("su24-3","AR Blue","Bdn Green","2024-06-23","10:20 AM",7,3),su24g("su24-4","Yellow","White","2024-06-23","11:05 AM",6,2),
+    su24g("su24-5","AR Blue","White","2024-06-30","8:50 AM",5,3),su24g("su24-6","Gold","Bdn Green","2024-06-30","9:35 AM",6,5),su24g("su24-7","Neon Green","Black","2024-06-30","10:20 AM",4,9),su24g("su24-8","BR Purple","Orange","2024-06-30","11:05 AM",5,4),
+    su24g("su24-9","BR Purple","Black","2024-07-14","8:50 AM",7,2),su24g("su24-10","Neon Green","Red","2024-07-14","9:35 AM",2,3),su24g("su24-11","Gold","White","2024-07-14","10:20 AM",2,4),su24g("su24-12","AR Blue","Yellow","2024-07-14","11:05 AM",0,3),
+    su24g("su24-13","Bdn Green","Yellow","2024-07-21","8:50 AM",3,5),su24g("su24-14","Gold","AR Blue","2024-07-21","9:35 AM",8,4),su24g("su24-15","BR Purple","Neon Green","2024-07-21","10:20 AM",7,1),su24g("su24-16","Orange","Red","2024-07-21","11:05 AM",6,7),
+    su24g("su24-17","BR Purple","Red","2024-07-28","8:50 AM",4,1),su24g("su24-18","Orange","Black","2024-07-28","9:35 AM",4,9),su24g("su24-19","Gold","Yellow","2024-07-28","10:20 AM",10,2),su24g("su24-20","Bdn Green","White","2024-07-28","11:05 AM",5,4),
+    su24g("su24-21","BR Purple","Bdn Green","2024-08-03","12:00 PM",5,4),
+    su24g("su24-22","Black","White","2024-08-04","8:50 AM",3,4),su24g("su24-23","Red","AR Blue","2024-08-04","9:35 AM",4,11),su24g("su24-24","Orange","Yellow","2024-08-04","10:20 AM",5,5),su24g("su24-25","Neon Green","Gold","2024-08-04","11:05 AM",4,13),
+    su24g("su24-26","Orange","White","2024-08-10","12:00 PM",5,2),
+    su24g("su24-27","Red","AR Blue","2024-08-11","8:50 AM",3,3),su24g("su24-28","Gold","BR Purple","2024-08-11","9:35 AM",2,7),su24g("su24-29","Neon Green","Bdn Green","2024-08-11","10:20 AM",2,7),su24g("su24-30","Black","Yellow","2024-08-11","11:05 AM",2,5),
+    // QF
+    su24g("su24-q1","Yellow","Red","2024-08-17","12:00 PM",2,6,"playoff"),su24g("su24-q2","BR Purple","Bdn Green","2024-08-18","8:50 AM",2,1,"playoff"),su24g("su24-q3","AR Blue","Black","2024-08-18","9:35 AM",4,3,"playoff"),su24g("su24-q4","Gold","Orange","2024-08-18","10:20 AM",11,5,"playoff"),
+    // Semi
+    su24g("su24-s1","BR Purple","AR Blue","2024-08-24","11:05 AM",1,0,"playoff"),su24g("su24-s2","Gold","Yellow","2024-08-25","12:05 PM",1,0,"playoff"),
+    // Final
+    su24g("su24-f","BR Purple","Gold","2024-08-25","10:00 AM",1,0,"playoff","https://app.veo.co/matches/20240825-purple-gold-summer-24-final-032ea26d/"),
+  ];
+
+  // ===== FALL 2024 =====
+  // Groups A (7) and B (7). Champion: AR Blue (Blue won over Gold)
+  const fa24T=[
+    {id:"fa24-ab",name:"AR Blue",color:"#1976D2",cap:null,group:"A"},
+    {id:"fa24-bp",name:"BR Purple",color:"#8E24AA",cap:null,group:"A"},
+    {id:"fa24-bk",name:"Black",color:"#212121",cap:null,group:"A"},
+    {id:"fa24-rd",name:"Red",color:"#C62828",cap:null,group:"A"},
+    {id:"fa24-dp",name:"Dark Purple",color:"#7B1FA2",cap:null,group:"A"},
+    {id:"fa24-sb",name:"Sky Blue",color:"#039BE5",cap:null,group:"A"},
+    {id:"fa24-wh",name:"White",color:"#BDBDBD",cap:null,group:"A"},
+    {id:"fa24-gd",name:"Gold",color:"#FF8F00",cap:null,group:"B"},
+    {id:"fa24-yl",name:"Yellow",color:"#F9A825",cap:null,group:"B"},
+    {id:"fa24-bg",name:"Bdn Green",color:"#2E7D32",cap:null,group:"B"},
+    {id:"fa24-or",name:"Orange",color:"#EF6C00",cap:null,group:"B"},
+    {id:"fa24-pk",name:"Pink",color:"#E91E63",cap:null,group:"B"},
+    {id:"fa24-gy",name:"Gray",color:"#78909C",cap:null,group:"B"},
+    {id:"fa24-ng",name:"Neon Green",color:"#64DD17",cap:null,group:"B"},
+  ];
+  const fa24n=n=>fa24T.find(x=>x.name===n)?.id;
+  const fa24g=(id,h,a,d,t,hs,as,ph,v)=>({id,h:fa24n(h),a:fa24n(a),date:d,time:t,loc:"James J Walker",hs,as,done:true,phase:ph||"group",videoUrl:v||""});
+  const fa24G=[
+    // W1 9/7 Sat
+    fa24g("fa24-1","BR Purple","Red","2024-09-07","9:05 AM",1,2),fa24g("fa24-2","White","Sky Blue","2024-09-07","12:50 PM",3,4),
+    // W1 9/8 Sun
+    fa24g("fa24-3","Gold","Gray","2024-09-08","10:50 AM",8,1),fa24g("fa24-4","Yellow","Bdn Green","2024-09-08","11:35 AM",4,3),fa24g("fa24-5","Orange","Neon Green","2024-09-08","12:20 PM",6,7),fa24g("fa24-6","AR Blue","Black","2024-09-08","1:05 PM",5,3),
+    // 9/14 Sat
+    fa24g("fa24-7","Gold","Yellow","2024-09-14","9:05 AM",13,3),fa24g("fa24-8","Pink","Bdn Green","2024-09-14","12:50 PM",4,10),
+    // W2 9/15 Sun
+    fa24g("fa24-9","Red","White","2024-09-15","10:50 AM",4,3),fa24g("fa24-10","Orange","Gray","2024-09-15","11:35 AM",5,2),fa24g("fa24-11","Black","Dark Purple","2024-09-15","12:20 PM",7,3),fa24g("fa24-12","BR Purple","AR Blue","2024-09-15","1:05 PM",6,9),
+    // W3 9/22 Sun
+    fa24g("fa24-13","BR Purple","Black","2024-09-22","10:50 AM",3,1),fa24g("fa24-14","Bdn Green","Gray","2024-09-22","11:35 AM",2,0),fa24g("fa24-15","Red","Sky Blue","2024-09-22","12:20 PM",4,1),fa24g("fa24-16","Yellow","Neon Green","2024-09-22","1:05 PM",6,4),
+    // W4 9/29 Sun
+    fa24g("fa24-17","AR Blue","White","2024-09-29","10:50 AM",8,5),fa24g("fa24-18","Red","Dark Purple","2024-09-29","11:35 AM",1,2),fa24g("fa24-19","Gold","Orange","2024-09-29","12:20 PM",7,4),fa24g("fa24-20","Pink","Gray","2024-09-29","1:05 PM",3,2),
+    // 10/5 Sat
+    fa24g("fa24-21","BR Purple","White","2024-10-05","9:05 AM",4,1),fa24g("fa24-22","Black","Sky Blue","2024-10-05","12:50 PM",4,2),
+    // W5 10/6 Sun
+    fa24g("fa24-23","Orange","Bdn Green","2024-10-06","10:50 AM",4,3),fa24g("fa24-24","Yellow","Pink","2024-10-06","11:35 AM",5,3),fa24g("fa24-25","Gold","Neon Green","2024-10-06","12:20 PM",10,2),fa24g("fa24-26","AR Blue","Dark Purple","2024-10-06","1:05 PM",3,0),
+    // W6 10/13 Sun
+    fa24g("fa24-27","Black","Red","2024-10-13","10:50 AM",4,2),fa24g("fa24-28","Orange","Pink","2024-10-13","11:35 AM",5,1),fa24g("fa24-29","Yellow","Gray","2024-10-13","12:20 PM",2,1),fa24g("fa24-30","BR Purple","Sky Blue","2024-10-13","1:05 PM",6,1),
+    // W7 10/20 Sun
+    fa24g("fa24-31","White","Dark Purple","2024-10-20","10:50 AM",3,4),fa24g("fa24-32","AR Blue","Sky Blue","2024-10-20","11:35 AM",5,3),fa24g("fa24-33","Gold","Bdn Green","2024-10-20","12:20 PM",3,0),fa24g("fa24-34","Pink","Neon Green","2024-10-20","1:05 PM",2,1),
+    // W8 10/27 Sun
+    fa24g("fa24-35","Neon Green","Gray","2024-10-27","10:50 AM",1,4),fa24g("fa24-36","Yellow","Orange","2024-10-27","11:35 AM",8,2),fa24g("fa24-37","BR Purple","Dark Purple","2024-10-27","12:20 PM",7,4),fa24g("fa24-38","Black","White","2024-10-27","1:05 PM",3,3),
+    // W9 11/3 Sun
+    fa24g("fa24-39","Neon Green","Bdn Green","2024-11-03","10:50 AM",3,5),fa24g("fa24-40","Sky Blue","Dark Purple","2024-11-03","11:35 AM",3,4),fa24g("fa24-41","Gold","Pink","2024-11-03","12:20 PM",4,4),fa24g("fa24-42","AR Blue","Red","2024-11-03","1:05 PM",11,5),
+    // Qtr Wk10 11/10
+    fa24g("fa24-q1","Gold","Red","2024-11-10","10:50 AM",2,1,"playoff"),fa24g("fa24-q2","AR Blue","Orange","2024-11-10","11:35 AM",11,2,"playoff"),fa24g("fa24-q3","Black","Yellow","2024-11-10","12:20 PM",5,4,"playoff"),fa24g("fa24-q4","Bdn Green","BR Purple","2024-11-10","1:05 PM",5,4,"playoff"),
+    // Semi W11 11/17
+    fa24g("fa24-s1","Gold","Bdn Green","2024-11-17","10:50 AM",8,5,"playoff"),fa24g("fa24-s2","AR Blue","Black","2024-11-17","11:50 AM",7,5,"playoff"),
+    // Final - Blue won over Gold
+    fa24g("fa24-f","AR Blue","Gold","2024-11-24","10:50 AM",1,0,"playoff","https://app.veo.co/matches/20241124-blue-gold-final-29a6d689/"),
+  ];
+
+  // ===== SUMMER 2023 =====
+  // No groups. Champion: Green
+  const su23T=[
+    {id:"su23-yl",name:"Yellow",color:"#F9A825",cap:null,group:""},
+    {id:"su23-pu",name:"Purple",color:"#9C27B0",cap:null,group:""},
+    {id:"su23-bl",name:"AR Blue",color:"#1565C0",cap:null,group:""},
+    {id:"su23-gn",name:"Bdn Green",color:"#4CAF50",cap:null,group:""},
+    {id:"su23-rd",name:"Red",color:"#C62828",cap:null,group:""},
+    {id:"su23-wh",name:"White",color:"#BDBDBD",cap:null,group:""},
+    {id:"su23-gy",name:"Gray",color:"#78909C",cap:null,group:""},
+    {id:"su23-or",name:"Orange",color:"#EF6C00",cap:null,group:""},
+    {id:"su23-bk",name:"Black",color:"#212121",cap:null,group:""},
+    {id:"su23-pk",name:"Pink",color:"#E91E63",cap:null,group:""},
+  ];
+  const su23n=n=>su23T.find(x=>x.name===n)?.id;
+  const su23g=(id,h,a,d,t,hs,as,ph,v)=>({id,h:su23n(h),a:su23n(a),date:d,time:t,loc:"James J Walker",hs,as,done:true,phase:ph||"group",videoUrl:v||""});
+  const su23G=[
+    su23g("su23-1","Red","Gray","2023-06-24","10:20 AM",2,2),su23g("su23-2","Bdn Green","Purple","2023-06-25","10:20 AM",4,4),su23g("su23-3","Yellow","White","2023-06-25","11:05 AM",5,0),su23g("su23-4","Pink","Black","2023-06-25","12:20 PM",4,9),
+    su23g("su23-5","Pink","Bdn Green","2023-07-08","10:20 AM",0,3),su23g("su23-6","AR Blue","Yellow","2023-07-08","11:05 AM",3,7),
+    su23g("su23-7","Pink","Gray","2023-07-09","10:20 AM",1,2),su23g("su23-8","Orange","Purple","2023-07-09","11:05 AM",2,3),su23g("su23-9","Bdn Green","White","2023-07-09","12:20 PM",3,3),su23g("su23-10","Red","Black","2023-07-09","1:05 PM",3,2),
+    su23g("su23-11","Orange","Bdn Green","2023-07-15","10:20 AM",4,8),
+    su23g("su23-12","White","Black","2023-07-16","10:20 AM",6,4),su23g("su23-13","Gray","Purple","2023-07-16","11:05 AM",1,5),su23g("su23-14","Yellow","Pink","2023-07-16","12:20 PM",8,3),su23g("su23-15","AR Blue","Red","2023-07-16","1:05 PM",6,3),
+    su23g("su23-16","Red","Pink","2023-07-22","10:20 AM",5,4),
+    su23g("su23-17","AR Blue","Bdn Green","2023-07-23","10:20 AM",6,4),su23g("su23-18","White","Purple","2023-07-23","11:05 AM",4,5),su23g("su23-19","Orange","Gray","2023-07-23","12:20 PM",5,2),su23g("su23-20","Yellow","Black","2023-07-23","1:05 PM",6,1),
+    su23g("su23-21","Red","Purple","2023-07-29","10:20 AM",1,3),su23g("su23-22","Yellow","Bdn Green","2023-07-29","11:05 AM",7,1),su23g("su23-23","AR Blue","Gray","2023-07-29","12:20 PM",6,3),su23g("su23-24","Orange","White","2023-07-29","1:05 PM",5,3),
+    su23g("su23-25","Orange","Black","2023-08-05","10:20 AM",4,7),
+    su23g("su23-26","Yellow","Purple","2023-08-06","10:20 AM",7,1),su23g("su23-27","Gray","White","2023-08-06","11:05 AM",3,1),su23g("su23-28","AR Blue","Red","2023-08-06","12:20 PM",7,2),su23g("su23-29","Orange","Pink","2023-08-06","1:05 PM",9,2),
+    su23g("su23-30","Pink","White","2023-08-12","10:20 AM",2,3),su23g("su23-31","Orange","Red","2023-08-12","11:05 AM",4,6),su23g("su23-32","Bdn Green","Black","2023-08-12","12:20 PM",5,6),su23g("su23-33","AR Blue","Purple","2023-08-12","1:05 PM",3,5),
+    su23g("su23-34","Orange","AR Blue","2023-08-19","10:20 AM",0,3),su23g("su23-35","Purple","Black","2023-08-19","11:05 AM",6,2),
+    su23g("su23-36","Yellow","Pink","2023-08-20","10:20 AM",1,6),su23g("su23-37","Red","White","2023-08-20","11:05 AM",3,5),su23g("su23-38","AR Blue","Black","2023-08-20","12:20 PM",11,8),su23g("su23-39","Bdn Green","Gray","2023-08-20","1:05 PM",7,4),
+    su23g("su23-40","Pink","Purple","2023-08-26","10:20 AM",1,10),
+    su23g("su23-41","Gray","Black","2023-08-27","10:20 AM",3,0),su23g("su23-42","Orange","Yellow","2023-08-27","11:05 AM",2,11),su23g("su23-43","Red","Bdn Green","2023-08-27","12:20 PM",2,8),su23g("su23-44","AR Blue","White","2023-08-27","1:05 PM",8,4),
+    // Semi
+    su23g("su23-s1","Purple","AR Blue","2023-09-09","8:50 AM",6,4,"playoff"),su23g("su23-s2","Yellow","Bdn Green","2023-09-09","9:50 AM",4,6,"playoff"),
+    // Final
+    su23g("su23-f","Purple","Bdn Green","2023-09-16","9:30 AM",4,5,"playoff","https://app.veo.co/matches/20230916-purple-green-final-9f9c75d2/"),
+  ];
+
+  // ===== FALL 2023 =====
+  // Groups A and B. Champion: BR Purple (Purple beats Green)
+  // Note: Dark Green = Bdn Green
+  const fa23T=[
+    {id:"fa23-bl",name:"AR Blue",color:"#1565C0",cap:null,group:"A"},
+    {id:"fa23-gd",name:"Gold",color:"#FF8F00",cap:null,group:"A"},
+    {id:"fa23-gy",name:"Gray",color:"#78909C",cap:null,group:"A"},
+    {id:"fa23-gn",name:"Bdn Green",color:"#4CAF50",cap:null,group:"A"},
+    {id:"fa23-rd",name:"Red",color:"#C62828",cap:null,group:"A"},
+    {id:"fa23-bk",name:"Black",color:"#212121",cap:null,group:"A"},
+    {id:"fa23-or",name:"Orange",color:"#EF6C00",cap:null,group:"B"},
+    {id:"fa23-bp",name:"BR Purple",color:"#8E24AA",cap:null,group:"B"},
+    {id:"fa23-yl",name:"Yellow",color:"#F9A825",cap:null,group:"B"},
+    {id:"fa23-bg",name:"Bdn Green",color:"#2E7D32",cap:null,group:"B"},
+    {id:"fa23-wh",name:"White",color:"#BDBDBD",cap:null,group:"B"},
+    {id:"fa23-pk",name:"Pink",color:"#E91E63",cap:null,group:"B"},
+  ];
+  const fa23n=n=>fa23T.find(x=>x.name===n)?.id;
+  const fa23g=(id,h,a,d,t,hs,as,ph,v)=>({id,h:fa23n(h),a:fa23n(a),date:d,time:t,loc:"James J Walker",hs,as,done:true,phase:ph||"group",videoUrl:v||""});
+  const fa23G=[
+    fa23g("fa23-1","Red","Black","2023-09-10","10:50 AM",2,4),fa23g("fa23-2","Pink","White","2023-09-10","11:35 AM",3,6),fa23g("fa23-3","Gray","Gold","2023-09-10","12:20 PM",5,5),fa23g("fa23-4","Bdn Green","Orange","2023-09-10","1:05 PM",3,4),
+    fa23g("fa23-5","Red","Gray","2023-09-17","10:50 AM",6,3),fa23g("fa23-6","Orange","Yellow","2023-09-17","11:35 AM",3,2),fa23g("fa23-7","Pink","Bdn Green","2023-09-17","12:20 PM",3,0),fa23g("fa23-8","Gold","AR Blue","2023-09-17","1:05 PM",4,8),
+    fa23g("fa23-9","Black","Bdn Green","2023-09-24","10:50 AM",1,5),fa23g("fa23-10","White","BR Purple","2023-09-24","11:35 AM",5,4),fa23g("fa23-11","Red","AR Blue","2023-09-24","12:20 PM",6,7),fa23g("fa23-12","Pink","Yellow","2023-09-24","1:05 PM",1,12),
+    fa23g("fa23-13","White","Yellow","2023-10-01","10:50 AM",3,9),fa23g("fa23-14","Black","AR Blue","2023-10-01","11:35 AM",2,7),fa23g("fa23-15","Bdn Green","BR Purple","2023-10-01","12:20 PM",2,4),fa23g("fa23-16","Gray","Bdn Green","2023-10-01","1:05 PM",5,4),
+    fa23g("fa23-17","White","Bdn Green","2023-10-07","11:20 AM",3,7),fa23g("fa23-18","Red","Gold","2023-10-07","12:05 PM",6,2),
+    fa23g("fa23-19","AR Blue","Bdn Green","2023-10-08","10:50 AM",2,7),fa23g("fa23-20","Pink","BR Purple","2023-10-08","11:35 AM",0,7),fa23g("fa23-21","Black","Gray","2023-10-08","12:20 PM",0,3),fa23g("fa23-22","Yellow","BR Purple","2023-10-08","1:05 PM",2,5),
+    fa23g("fa23-23","Red","Bdn Green","2023-10-15","10:50 AM",0,5),fa23g("fa23-24","Pink","BR Purple","2023-10-15","11:35 AM",0,7),fa23g("fa23-25","Black","Gold","2023-10-15","12:20 PM",2,4),fa23g("fa23-26","White","Orange","2023-10-15","1:05 PM",3,4),
+    fa23g("fa23-27","Gray","AR Blue","2023-10-22","10:50 AM",4,7),fa23g("fa23-28","Bdn Green","Yellow","2023-10-22","11:35 AM",2,5),fa23g("fa23-29","Gold","Bdn Green","2023-10-22","12:20 PM",7,3),fa23g("fa23-30","Orange","BR Purple","2023-10-22","1:05 PM",5,5),
+    fa23g("fa23-31","Red","Bdn Green","2023-10-29","10:50 AM",3,5),fa23g("fa23-32","AR Blue","Orange","2023-10-29","11:35 AM",2,7),fa23g("fa23-33","Gold","White","2023-10-29","12:20 PM",5,1),fa23g("fa23-34","Gray","Yellow","2023-10-29","1:05 PM",2,8),
+    fa23g("fa23-35","Red","BR Purple","2023-11-05","10:50 AM",2,9),fa23g("fa23-36","Black","Orange","2023-11-05","11:35 AM",3,5),fa23g("fa23-37","Gold","Yellow","2023-11-05","12:20 PM",1,4),fa23g("fa23-38","Bdn Green","Bdn Green","2023-11-05","1:05 PM",2,3),
+    fa23g("fa23-39","Black","Orange","2023-11-12","10:50 AM",3,5),fa23g("fa23-40","BR Purple","Bdn Green","2023-11-12","11:35 AM",4,3),fa23g("fa23-41","AR Blue","Pink","2023-11-12","12:20 PM",4,4),fa23g("fa23-42","Gray","White","2023-11-12","1:05 PM",7,1),
+    // QF W11
+    fa23g("fa23-q1","Bdn Green","Orange","2023-11-19","10:50 AM",6,5,"playoff"),fa23g("fa23-q2","BR Purple","Gray","2023-11-19","11:35 AM",2,0,"playoff"),fa23g("fa23-q3","Gold","Yellow","2023-11-19","12:20 PM",5,4,"playoff"),fa23g("fa23-q4","AR Blue","Bdn Green","2023-11-19","1:05 PM",4,2,"playoff"),
+    // Semi
+    fa23g("fa23-s1","BR Purple","AR Blue","2023-12-03","10:05 AM",0,0,"playoff"),fa23g("fa23-s2","Bdn Green","Gold","2023-12-03","11:05 AM",0,0,"playoff"),
+    // Final - Green 5-8 Purple => BR Purple wins
+    fa23g("fa23-f","Bdn Green","BR Purple","2023-12-10","11:05 AM",5,8,"playoff","https://app.veo.co/matches/20231210-green-purple-final-fall-2023-a0c7622a/"),
+  ];
+
+  // ===== WINTER 2023-2024 =====
+  // Groups A and B. Champion: BR Purple (beats Blue in final)
+  // Dark Green = Bdn Green
+  const w23T=[
+    {id:"w23-bp",name:"BR Purple",color:"#8E24AA",cap:null,group:"A"},
+    {id:"w23-gn",name:"Bdn Green",color:"#4CAF50",cap:null,group:"A"},
+    {id:"w23-rd",name:"Red",color:"#C62828",cap:null,group:"A"},
+    {id:"w23-bk",name:"Black",color:"#212121",cap:null,group:"A"},
+    {id:"w23-gy",name:"Gray",color:"#78909C",cap:null,group:"A"},
+    {id:"w23-yl",name:"Yellow",color:"#F9A825",cap:null,group:"A"},
+    {id:"w23-bl",name:"AR Blue",color:"#1565C0",cap:null,group:"B"},
+    {id:"w23-gd",name:"Gold",color:"#FF8F00",cap:null,group:"B"},
+    {id:"w23-pk",name:"Pink",color:"#E91E63",cap:null,group:"B"},
+    {id:"w23-bg",name:"Bdn Green",color:"#2E7D32",cap:null,group:"B"},
+    {id:"w23-wh",name:"White",color:"#BDBDBD",cap:null,group:"B"},
+    {id:"w23-or",name:"Orange",color:"#EF6C00",cap:null,group:"B"},
+  ];
+  const w23n=n=>w23T.find(x=>x.name===n)?.id;
+  const w23g=(id,h,a,d,t,hs,as,ph,v)=>({id,h:w23n(h),a:w23n(a),date:d,time:t,loc:"James J Walker",hs,as,done:true,phase:ph||"group",videoUrl:v||""});
+  const w23G=[
+    w23g("w23-1","Red","Black","2023-12-02","10:20 AM",4,3),w23g("w23-2","Pink","White","2023-12-02","11:05 AM",2,8),w23g("w23-3","Gray","Yellow","2023-12-02","11:50 AM",1,5),
+    w23g("w23-4","White","Orange","2023-12-03","10:45 AM",4,3),w23g("w23-5","AR Blue","Gold","2023-12-03","10:45 AM",4,0),
+    w23g("w23-6","Red","Gray","2023-12-09","10:20 AM",3,1),w23g("w23-7","Black","Yellow","2023-12-09","11:05 AM",3,0),
+    w23g("w23-8","Bdn Green","Orange","2023-12-16","10:20 AM",3,0),w23g("w23-9","Pink","AR Blue","2023-12-16","11:05 AM",4,7),
+    w23g("w23-10","Black","BR Purple","2023-12-17","10:20 AM",1,3),w23g("w23-11","Red","Bdn Green","2023-12-17","11:05 AM",2,4),
+    w23g("w23-12","White","AR Blue","2023-01-06","10:20 AM",4,5),w23g("w23-13","Black","Bdn Green","2023-01-06","11:05 AM",2,5),w23g("w23-14","Bdn Green","Gold","2023-01-06","11:50 AM",4,11),
+    w23g("w23-15","Gray","BR Purple","2023-01-07","10:20 AM",4,3),w23g("w23-16","Red","Yellow","2023-01-07","11:05 AM",4,2),w23g("w23-17","Pink","Orange","2023-01-07","11:50 AM",4,2),w23g("w23-18","Orange","AR Blue","2023-01-07","12:35 PM",3,0),
+    w23g("w23-19","Pink","Gold","2024-01-13","10:20 AM",7,6),w23g("w23-20","Bdn Green","BR Purple","2024-01-13","11:05 AM",3,6),w23g("w23-21","White","Bdn Green","2024-01-13","11:50 AM",1,1),
+    w23g("w23-22","Gray","Red","2024-01-14","10:20 AM",3,2),w23g("w23-23","Black","Yellow","2024-01-14","11:05 AM",3,2),
+    w23g("w23-24","White","Gold","2024-01-21","10:20 AM",0,9),w23g("w23-25","Orange","Bdn Green","2024-01-21","11:05 AM",2,5),w23g("w23-26","Yellow","BR Purple","2024-01-21","11:50 AM",2,4),
+    w23g("w23-27","Red","BR Purple","2024-01-28","10:20 AM",3,2),w23g("w23-28","Gray","Bdn Green","2024-01-28","11:05 AM",3,8),
+    w23g("w23-29","Pink","Bdn Green","2024-01-28","11:50 AM",4,6),w23g("w23-30","AR Blue","Orange","2024-01-28","12:35 PM",0,8),
+    w23g("w23-31","Bdn Green","Black","2024-02-03","10:20 AM",6,5),w23g("w23-32","Red","AR Blue","2024-02-03","11:05 AM",0,6),w23g("w23-33","BR Purple","White","2024-02-03","11:50 AM",8,1),
+    w23g("w23-34","Yellow","Pink","2024-02-04","10:20 AM",3,7),w23g("w23-35","Black","Bdn Green","2024-02-04","11:05 AM",4,4),w23g("w23-36","Gray","Orange","2024-02-04","11:50 AM",4,3),w23g("w23-37","Red","Gold","2024-02-04","12:35 PM",6,7),
+    w23g("w23-38","Yellow","Bdn Green","2024-02-10","10:20 AM",3,3),w23g("w23-39","Black","Gray","2024-02-10","11:05 AM",3,2),
+    w23g("w23-40","BR Purple","Bdn Green","2024-02-11","10:20 AM",4,3),w23g("w23-41","Gray","Gold","2024-02-11","11:05 AM",3,6),w23g("w23-42","Black","White","2024-02-11","11:50 AM",3,1),
+    // QF
+    w23g("w23-q1","BR Purple","Bdn Green","2024-02-24","10:20 AM",8,1,"playoff"),w23g("w23-q2","Bdn Green","Pink","2024-02-24","11:20 AM",12,6,"playoff"),
+    w23g("w23-q3","Red","Gold","2024-02-25","10:20 AM",5,10,"playoff"),w23g("w23-q4","Black","AR Blue","2024-02-25","11:20 AM",2,8,"playoff"),
+    // Semi
+    w23g("w23-s1","BR Purple","Gold","2024-03-03","10:20 AM",8,6,"playoff"),w23g("w23-s2","Bdn Green","AR Blue","2024-03-03","11:00 AM",2,6,"playoff"),
+    // Final
+    w23g("w23-f","BR Purple","AR Blue","2024-03-10","10:20 AM",1,0,"playoff","https://app.veo.co/matches/20240310-final-purple-blue-in-green-aba49681/"),
+  ];
+
+  // ===== SPRING 2024 =====
+  // Single group, 9 teams. Champion: BR Purple
+  const sp24T=[
+    {id:"sp24-gd",name:"Gold",color:"#FF8F00",cap:null,group:""},
+    {id:"sp24-wh",name:"White",color:"#BDBDBD",cap:null,group:""},
+    {id:"sp24-rd",name:"Red",color:"#C62828",cap:null,group:""},
+    {id:"sp24-bp",name:"BR Purple",color:"#8E24AA",cap:null,group:""},
+    {id:"sp24-yl",name:"Yellow",color:"#F9A825",cap:null,group:""},
+    {id:"sp24-gy",name:"Gray",color:"#78909C",cap:null,group:""},
+    {id:"sp24-bl",name:"AR Blue",color:"#1565C0",cap:null,group:""},
+    {id:"sp24-bk",name:"Black",color:"#212121",cap:null,group:""},
+    {id:"sp24-gn",name:"Bdn Green",color:"#4CAF50",cap:null,group:""},
+  ];
+  const sp24n=n=>sp24T.find(x=>x.name===n)?.id;
+  const sp24g=(id,h,a,d,t,hs,as,loc,ph,v)=>({id,h:sp24n(h),a:sp24n(a),date:d,time:t,loc:loc||"Tanahey",hs,as,done:true,phase:ph||"group",videoUrl:v||""});
+  const sp24G=[
+    sp24g("sp24-1","Gray","Yellow","2024-03-16","3:50 PM",9,5,"JJW"),sp24g("sp24-2","Bdn Green","BR Purple","2024-03-16","4:35 PM",0,9,"JJW"),sp24g("sp24-3","Red","Black","2024-03-16","5:20 PM",3,2,"JJW"),sp24g("sp24-4","Gold","AR Blue","2024-03-16","6:05 PM",7,6,"JJW"),
+    sp24g("sp24-5","Gray","BR Purple","2024-03-23","3:30 PM",2,6,"JJW"),sp24g("sp24-6","Yellow","Bdn Green","2024-03-23","4:10 PM",3,0,"JJW"),sp24g("sp24-7","Black","AR Blue","2024-03-23","4:50 PM",3,0,"JJW"),sp24g("sp24-8","Red","White","2024-03-23","5:30 PM",3,3,"JJW"),
+    sp24g("sp24-9","BR Purple","Red","2024-04-06","3:50 PM",1,5),sp24g("sp24-10","Gray","Bdn Green","2024-04-06","4:35 PM",1,1),sp24g("sp24-11","Yellow","Black","2024-04-06","5:20 PM",1,0),sp24g("sp24-12","Gold","White","2024-04-06","6:05 PM",4,0),
+    sp24g("sp24-13","Bdn Green","Black","2024-04-13","3:50 PM",1,2),sp24g("sp24-14","Yellow","White","2024-04-13","4:35 PM",1,4),sp24g("sp24-15","Gray","Gold","2024-04-13","5:20 PM",0,1),sp24g("sp24-16","Red","AR Blue","2024-04-13","6:05 PM",2,0),
+    sp24g("sp24-17","Gray","White","2024-04-20","3:50 PM",3,1),sp24g("sp24-18","Black","Gold","2024-04-20","4:35 PM",1,3),sp24g("sp24-19","Bdn Green","AR Blue","2024-04-20","5:20 PM",1,6),sp24g("sp24-20","Yellow","BR Purple","2024-04-20","6:05 PM",1,3),
+    sp24g("sp24-21","Bdn Green","Red","2024-04-27","3:50 PM",0,1),sp24g("sp24-22","AR Blue","White","2024-04-27","4:35 PM",0,0),sp24g("sp24-23","Black","BR Purple","2024-04-27","5:20 PM",1,0),sp24g("sp24-24","Yellow","Gold","2024-04-27","6:05 PM",0,7),
+    sp24g("sp24-25","BR Purple","Gold","2024-05-04","3:50 PM",3,2),sp24g("sp24-26","Gray","AR Blue","2024-05-04","4:35 PM",0,7),sp24g("sp24-27","Bdn Green","White","2024-05-04","5:20 PM",0,3),sp24g("sp24-28","Yellow","Red","2024-05-04","6:05 PM",3,1),
+    sp24g("sp24-29","Gray","Black","2024-05-11","3:50 PM",5,2),sp24g("sp24-30","Red","Gold","2024-05-11","4:35 PM",0,4),sp24g("sp24-31","Yellow","AR Blue","2024-05-11","5:20 PM",7,3),sp24g("sp24-32","BR Purple","White","2024-05-11","6:05 PM",0,3),
+    sp24g("sp24-33","Gray","Red","2024-05-18","3:50 PM",1,1),sp24g("sp24-34","Bdn Green","Gold","2024-05-18","4:35 PM",0,2),sp24g("sp24-35","Black","White","2024-05-18","5:20 PM",0,3),sp24g("sp24-36","BR Purple","AR Blue","2024-05-18","6:05 PM",1,5),
     // QF
     sp24g("sp24-q1","Gold","Black","2024-06-08","3:50 PM",2,0,"Tanahey","playoff"),sp24g("sp24-q2","White","AR Blue","2024-06-08","4:35 PM",0,1,"Tanahey","playoff"),sp24g("sp24-q3","Red","Gray","2024-06-08","5:20 PM",0,1,"Tanahey","playoff"),sp24g("sp24-q4","BR Purple","Yellow","2024-06-08","6:05 PM",3,1,"Tanahey","playoff"),
     // Semi
