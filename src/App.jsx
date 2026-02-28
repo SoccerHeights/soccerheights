@@ -1021,7 +1021,7 @@ export default function App() {
   const[pw,setPw]=useState("");const[err,setErr]=useState("");const[tab,setTab]=useState("standings");
   const[selSeason,setSelSeason]=useState(null);const[modal,setModal]=useState(null);const[form,setForm]=useState({});const[msg,setMsg]=useState("");const[teamFilter,setTeamFilter]=useState("");
 
-  useEffect(()=>{(async()=>{const s=await loadData();if(s){setData(s);}else{const d=DEFAULT();setData(d);await saveData(d);}setLoading(false);})();},[]);
+  useEffect(()=>{(async()=>{const defaults=DEFAULT();const s=await loadData();if(s){const histIds=new Set(defaults.seasons.filter(x=>x.status==="completed").map(x=>x.id));const activeSaved=s.seasons.filter(x=>!histIds.has(x.id));const histFromCode=defaults.seasons.filter(x=>x.status==="completed");setData({...s,seasons:[...histFromCode,...activeSaved]});}else{setData(defaults);await saveData(defaults);}setLoading(false);})();},[]);
 
   const season=data?.seasons.find(s=>s.id===selSeason)||data?.seasons.find(s=>s.status==="active")||data?.seasons[0];
   const upd=fn=>{const scrollY=window.scrollY;const u=fn(data);setData(u);saveData(u);setTimeout(()=>window.scrollTo(0,scrollY),50);};
