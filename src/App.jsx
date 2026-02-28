@@ -1101,11 +1101,11 @@ export default function App() {
           const upcoming=allGames.filter(g=>!g.done).sort((a,b)=>{const dd=new Date(a.date)-new Date(b.date);return dd!==0?dd:timeToMin(a.time)-timeToMin(b.time);});
           const completed=allGames.filter(g=>g.done).sort((a,b)=>{const dd=new Date(b.date)-new Date(a.date);return dd!==0?dd:timeToMin(b.time)-timeToMin(a.time);});
           const upGrp=upcoming.filter(g=>(g.phase||"group")==="group");
-          const upPo=upcoming.filter(g=>g.phase==="playoff");
+          const upPo=upcoming.filter(g=>g.phase==="playoff"&&(isAdmin||g.h));
           const compGrp=completed.filter(g=>(g.phase||"group")==="group");
           const compPo=completed.filter(g=>g.phase==="playoff");
           const secStyle={fontSize:16,margin:"24px 0 12px",fontFamily:"'Bricolage Grotesque',sans-serif"};
-          return <>{upcoming.length>0&&<><h3 style={{...secStyle,color:"#00C896"}}>Upcoming Games</h3>{upPo.length>0&&<><h4 style={{fontSize:14,margin:"16px 0 8px",color:"#FFB300"}}>🏆 Playoffs</h4>{upPo.map(g=><GameCard key={g.id} g={g} admin={isAdmin}/>)}</>}{upGrp.map(g=><GameCard key={g.id} g={g} admin={isAdmin}/>)}</>}
+          return <>{upcoming.length>0&&<><h3 style={{...secStyle,color:"#00C896"}}>Upcoming Games</h3>{upGrp.map(g=><GameCard key={g.id} g={g} admin={isAdmin}/>)}{upPo.length>0&&<><h4 style={{fontSize:14,margin:"16px 0 8px",color:"#FFB300"}}>🏆 Playoffs</h4>{upPo.map(g=><GameCard key={g.id} g={g} admin={isAdmin}/>)}</>}</>}
           {completed.length>0&&<><h3 style={{...secStyle,color:"#8892a4"}}>Completed Games</h3>{compPo.length>0&&<><h4 style={{fontSize:14,margin:"16px 0 8px",color:"#FFB300"}}>🏆 Playoffs</h4>{compPo.map(g=><GameCard key={g.id} g={g} admin={isAdmin}/>)}</>}{compGrp.map(g=><GameCard key={g.id} g={g} admin={isAdmin}/>)}</>}
           {allGames.length===0&&<Card><p style={{color:"#8892a4",textAlign:"center",margin:0}}>No games yet.</p></Card>}</>;})()}
       </div>}
