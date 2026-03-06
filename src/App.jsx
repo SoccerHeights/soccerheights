@@ -16,9 +16,11 @@ const teamColor = (name) => TEAM_COLORS[name.toLowerCase().trim()] || "#607D8B";
 const loadData = async () => {
   try {
     const { data, error } = await supabase.from("league_data").select("data").eq("id", 1).single();
-    if (error || !data) return null;
-    return data.data;
-  } catch { return null; }
+    if (error && error.code === "PGRST116") return { status: "empty" };
+    if (error) return { status: "error", msg: error.message };
+    if (!data) return { status: "empty" };
+    return { status: "ok", data: data.data };
+  } catch (e) { return { status: "error", msg: e.message || "Connection failed" }; }
 };
 const saveData = async (d) => {
   try {
@@ -1021,7 +1023,8 @@ export default function App() {
   const[pw,setPw]=useState("");const[err,setErr]=useState("");const[tab,setTab]=useState("standings");
   const[selSeason,setSelSeason]=useState(null);const[modal,setModal]=useState(null);const[form,setForm]=useState({});const[msg,setMsg]=useState("");const[teamFilter,setTeamFilter]=useState("");
 
-  useEffect(()=>{(async()=>{const defaults=DEFAULT();const s=await loadData();if(s){const histIds=new Set(defaults.seasons.filter(x=>x.status==="completed").map(x=>x.id));const activeSaved=s.seasons.filter(x=>!histIds.has(x.id));const histFromCode=defaults.seasons.filter(x=>x.status==="completed");setData({...s,seasons:[...histFromCode,...activeSaved]});}else{setData(defaults);await saveData(defaults);}setLoading(false);})();},[]);
+  const [loadError,setLoadError]=useState(null);
+  useEffect(()=>{(async()=>{const defaults=DEFAULT();const result=await loadData();if(result.status==="ok"){const s=result.data;const histIds=new Set(defaults.seasons.filter(x=>x.status==="completed").map(x=>x.id));const activeSaved=s.seasons.filter(x=>!histIds.has(x.id));const histFromCode=defaults.seasons.filter(x=>x.status==="completed");setData({...s,seasons:[...histFromCode,...activeSaved]});}else if(result.status==="empty"){setData(defaults);}else{setLoadError(result.msg||"Could not connect to database");setData(defaults);}setLoading(false);})();},[]);
 
   const season=data?.seasons.find(s=>s.id===selSeason)||data?.seasons.find(s=>s.status==="active")||data?.seasons[0];
   const upd=fn=>{const scrollY=window.scrollY;const u=fn(data);setData(u);saveData(u);setTimeout(()=>window.scrollTo(0,scrollY),50);};
@@ -1077,6 +1080,7 @@ export default function App() {
     <div style={{padding:"8px 12px",overflowX:"auto",display:"flex",gap:4,borderBottom:"1px solid rgba(255,255,255,0.04)",background:"rgba(13,17,23,0.5)"}}>
       {tabs.map(t=><button key={t.id} onClick={()=>setTab(t.id)} style={{display:"flex",alignItems:"center",gap:6,padding:"8px 14px",border:"none",borderRadius:8,cursor:"pointer",fontSize:13,fontWeight:600,fontFamily:"'DM Sans',sans-serif",whiteSpace:"nowrap",background:tab===t.id?"rgba(0,200,150,0.12)":"transparent",color:tab===t.id?"#00C896":"#8892a4"}}><I n={t.icon} s={15}/>{t.label}</button>)}
     </div>
+    {loadError&&<div style={{margin:"12px 20px 0",background:"rgba(230,57,70,0.1)",borderRadius:10,padding:12,border:"1px solid rgba(230,57,70,0.3)"}}><div style={{color:"#E63946",fontSize:13,fontWeight:600}}>⚠ Database connection issue</div><div style={{color:"#E63946",fontSize:12,marginTop:4}}>Showing default data. Your recent changes may not be visible. Try refreshing.</div></div>}
     {msg&&<div style={{margin:"12px 20px 0",background:"rgba(0,200,150,0.1)",borderRadius:10,padding:12}}><div style={{color:"#00C896",fontSize:12}}>{msg}</div></div>}
     <div style={{padding:20,maxWidth:900,margin:"0 auto"}}>
 
@@ -1143,6 +1147,7 @@ export default function App() {
         <Card style={{marginBottom:16}}><div style={{fontWeight:700,color:"#e8ecf4",marginBottom:14}}>App URL</div><Inp label="URL" value={data.appUrl||""} onChange={v=>upd(d=>({...d,appUrl:v}))} ph="https://..."/></Card>
         <Card style={{marginBottom:16}}><div style={{fontWeight:700,color:"#e8ecf4",marginBottom:14}}>Invite Template</div><p style={{fontSize:12,color:"#8892a4",margin:"0 0 10px"}}>Use: {"{{team}} {{role}} {{link}}"}</p><Inp label="Subject" value={data.inviteTemplate?.subject||""} onChange={v=>upd(d=>({...d,inviteTemplate:{...d.inviteTemplate,subject:v}}))}/><Inp label="Body" ta value={data.inviteTemplate?.body||""} onChange={v=>upd(d=>({...d,inviteTemplate:{...d.inviteTemplate,body:v}}))}/></Card>
         <Card><div style={{fontWeight:700,color:"#e8ecf4",marginBottom:14}}>Admin Password</div><Inp label="Password" value={data.adminPw} onChange={v=>upd(d=>({...d,adminPw:v}))}/></Card>
+        <Card style={{marginTop:16}}><div style={{fontWeight:700,color:"#e8ecf4",marginBottom:14}}>Export Data</div><p style={{fontSize:12,color:"#8892a4",margin:"0 0 12px"}}>Download a full backup of all league data (active seasons, settings, rules).</p><Btn icon="dl" onClick={()=>{const blob=new Blob([JSON.stringify(data,null,2)],{type:"application/json"});const url=URL.createObjectURL(blob);const a=document.createElement("a");a.href=url;a.download=`soccerheights-backup-${new Date().toISOString().split("T")[0]}.json`;a.click();URL.revokeObjectURL(url);}}>Export JSON Backup</Btn></Card>
       </div>}
     </div>
 
