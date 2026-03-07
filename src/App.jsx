@@ -1097,6 +1097,7 @@ export default function App() {
         {season.champion&&<Card style={{marginBottom:16,border:"1px solid rgba(0,200,150,0.3)",background:"rgba(0,200,150,0.04)",textAlign:"center"}}><div style={{fontSize:13,color:"#8892a4",marginBottom:4}}>🏆 Champion</div><div style={{fontSize:18,fontWeight:700,color:"#00C896",fontFamily:"'Bricolage Grotesque',sans-serif"}}>{season.champion}</div></Card>}
         {(season.groups||[]).length>1?(season.groups||[]).map(g=> <StandingsTable key={g} rows={calcStandings(season,g)} title={`Group ${g}`}/>)
         :<StandingsTable rows={calcStandings(season,null)}/>}
+        {isAdmin&&season.status!=="completed"&&<div style={{marginTop:20,textAlign:"center"}}><Btn icon="trophy" onClick={()=>{setForm({playoffSize:"8",playoffDate:"",playoffTime:"09:00 AM",playoffLoc:"James J Walker"});setModal("genPlayoffs");}}>Generate Playoffs</Btn></div>}
       </div>}
 
       {tab==="schedule"&&season&&<div>
@@ -1167,5 +1168,26 @@ export default function App() {
     <Modal open={modal==="video"} onClose={()=>setModal(null)} title="Game Video Link"><Inp label="Video URL" value={form.videoUrl||""} onChange={v=>setForm({...form,videoUrl:v})} ph="https://app.veo.co/..."/><Btn onClick={()=>{const sy=window.scrollY;updSeason(s=>({...s,games:s.games.map(g=>g.id===form.gid?{...g,videoUrl:form.videoUrl||""}:g)}));setModal(null);setTimeout(()=>window.scrollTo(0,sy),100);}}>Save</Btn></Modal>
 
     <Modal open={modal==="invite"} onClose={()=>setModal(null)} title="Send Invite"><Inp label="Email" value={form.email||""} onChange={v=>setForm({...form,email:v})} ph="player@email.com"/><Inp label="Team" value={form.team||""} onChange={v=>setForm({...form,team:v})}/><Sel label="Role" value={form.role||"captain"} onChange={v=>setForm({...form,role:v})} opts={[{v:"captain",l:"Captain"},{v:"player",l:"Player"}]}/><Btn icon="send" onClick={()=>{if(!form.email)return;upd(d=>({...d,invites:[...d.invites,{email:form.email,team:form.team,role:form.role||"captain",status:"pending",sent:new Date().toISOString().split("T")[0]}]}));const{subj,body}=buildInvite(form.email,form.team,form.role);gmailCompose(form.email,subj,body);setModal(null);}} disabled={!form.email}>Send</Btn></Modal>
+
+    <Modal open={modal==="genPlayoffs"} onClose={()=>setModal(null)} title="Generate Playoffs">{(()=>{
+      const allGroups=(season?.groups||["A","B"]);
+      const allStandings=allGroups.flatMap(g=>calcStandings(season,g));
+      allStandings.sort((a,b)=>b.pts!==a.pts?b.pts-a.pts:b.gd!==a.gd?b.gd-a.gd:b.gf-a.gf);
+      const size=parseInt(form.playoffSize)||8;
+      const qualified=allStandings.slice(0,size);
+      const matchups=[];
+      if(size===8){matchups.push([qualified[0],qualified[7]],[qualified[1],qualified[6]],[qualified[2],qualified[5]],[qualified[3],qualified[4]]);}
+      else if(size===6){matchups.push([qualified[0],qualified[3]],[qualified[1],qualified[2]],[qualified[4],qualified[5]]);}
+      else if(size===4){matchups.push([qualified[0],qualified[3]],[qualified[1],qualified[2]]);}
+      return <><Sel label="Playoff Size" value={form.playoffSize||"8"} onChange={v=>setForm({...form,playoffSize:v})} opts={[{v:"4",l:"4 Teams (Semis)"},{v:"6",l:"6 Teams"},{v:"8",l:"8 Teams (Quarter-Finals)"}]}/>
+      <div style={{margin:"16px 0"}}><div style={{fontSize:13,fontWeight:700,color:"#FFB300",marginBottom:10}}>Seedings</div>
+      {qualified.map((t,i)=><div key={t.team.id} style={{display:"flex",alignItems:"center",gap:8,padding:"4px 0",fontSize:13,color:"#e8ecf4"}}><span style={{color:"#FFB300",fontWeight:700,width:20}}>{i+1}</span><div style={{width:10,height:10,borderRadius:"50%",background:t.team.color}}/><span>{t.team.name}</span><span style={{color:"#8892a4",marginLeft:"auto"}}>{t.pts}pts, {t.gd>0?"+":""}{t.gd}gd</span></div>)}</div>
+      <div style={{margin:"16px 0"}}><div style={{fontSize:13,fontWeight:700,color:"#00C896",marginBottom:10}}>Matchups</div>
+      {matchups.map((m,i)=><div key={i} style={{display:"flex",alignItems:"center",gap:8,padding:"6px 0",fontSize:13,color:"#e8ecf4",borderBottom:"1px solid rgba(255,255,255,0.04)"}}><span style={{color:"#8892a4",width:30}}>QF{i+1}</span><div style={{width:10,height:10,borderRadius:"50%",background:m[0]?.team.color}}/><span style={{fontWeight:600}}>{m[0]?.team.name}</span><span style={{color:"#8892a4",margin:"0 6px"}}>vs</span><div style={{width:10,height:10,borderRadius:"50%",background:m[1]?.team.color}}/><span style={{fontWeight:600}}>{m[1]?.team.name}</span></div>)}</div>
+      <Inp label="Date" type="date" value={form.playoffDate||""} onChange={v=>setForm({...form,playoffDate:v})}/>
+      <Inp label="Start Time" value={form.playoffTime||"09:00 AM"} onChange={v=>setForm({...form,playoffTime:v})} ph="09:00 AM"/>
+      <Inp label="Location" value={form.playoffLoc||""} onChange={v=>setForm({...form,playoffLoc:v})}/>
+      <Btn onClick={()=>{if(!form.playoffDate)return;const games=matchups.map((m,i)=>{const baseMin=timeToMin(form.playoffTime||"09:00 AM")+i*45;const h=Math.floor(baseMin/60);const mn=baseMin%60;const ampm=h>=12?"PM":"AM";const h12=h>12?h-12:h===0?12:h;const timeStr=`${h12}:${String(mn).padStart(2,"0")} ${ampm}`;return{id:`po${Date.now()}-${i}`,h:m[0]?.team.id,a:m[1]?.team.id,date:form.playoffDate,time:timeStr,loc:form.playoffLoc||"",hs:null,as:null,done:false,phase:"playoff",videoUrl:""};});updSeason(s=>({...s,games:[...s.games,...games]}));flash(`Generated ${games.length} playoff games!`);setModal(null);}}>Generate {matchups.length} Games</Btn></>;
+    })()}</Modal>
   </div>;
 }
