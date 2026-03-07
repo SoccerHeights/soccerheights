@@ -1137,7 +1137,7 @@ export default function App() {
         return <div>
           <h2 style={{fontSize:20,margin:"0 0 8px",color:"#fff",fontFamily:"'Bricolage Grotesque',sans-serif",textAlign:"center"}}>🏆 Playoff Bracket</h2>
           <div style={{fontSize:12,color:"#8892a4",textAlign:"center",marginBottom:20}}>{season.name}</div>
-          {qf.length>0&&<>{sectionTitle("Quarter-Finals")}<div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>{leftQF.map((g,i)=><div key={g.id}>{matchCard(g,"QF"+(i===0?"1":"4"))}</div>)}{rightQF.map((g,i)=><div key={g.id}>{matchCard(g,"QF"+(i===0?"2":"3"))}</div>)}</div></>}
+          {qf.length>0&&<>{sectionTitle("Quarter-Finals")}<div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}><div>{matchCard(leftQF[0],"QF1")}</div><div>{matchCard(rightQF[0],"QF2")}</div>{leftQF[1]&&<div>{matchCard(leftQF[1],"QF4")}</div>}{rightQF[1]&&<div>{matchCard(rightQF[1],"QF3")}</div>}</div><div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginTop:4}}><div style={{textAlign:"center",fontSize:10,color:"#8892a4"}}> ↓ SF1</div><div style={{textAlign:"center",fontSize:10,color:"#8892a4"}}> ↓ SF2</div></div></>}
           {(sf.length>0||qf.length>2)&&<>{sectionTitle("Semi-Finals")}<div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>{leftSF.length>0?leftSF.map(g=><div key={g.id}>{matchCard(g,"SF1")}</div>):<div>{placeholderCard("Semi-Final 1")}</div>}{rightSF.length>0?rightSF.map(g=><div key={g.id}>{matchCard(g,"SF2")}</div>):<div>{placeholderCard("Semi-Final 2")}</div>}</div></>}
           {sectionTitle("Final")}
           <div style={{maxWidth:300,margin:"0 auto"}}>{final_.length>0?final_.map(g=><div key={g.id}>{matchCard(g,"Final")}</div>):placeholderCard("Final")}</div>
