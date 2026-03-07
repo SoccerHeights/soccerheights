@@ -24,7 +24,14 @@ const loadData = async () => {
 };
 const saveData = async (d) => {
   try {
-    await supabase.from("league_data").upsert({ id: 1, data: d, updated_at: new Date().toISOString() });
+    const { data: existing } = await supabase.from("league_data").select("updated_at").eq("id", 1).single();
+    if (existing && existing.updated_at) {
+      const dbTime = new Date(existing.updated_at).getTime();
+      const now = Date.now();
+      if (now - dbTime < 1000) return;
+    }
+    const ts = new Date().toISOString();
+    await supabase.from("league_data").upsert({ id: 1, data: { ...d, _lastSave: ts }, updated_at: ts });
   } catch(e) { console.error(e); }
 };
 
@@ -1024,11 +1031,11 @@ export default function App() {
   const[pw,setPw]=useState("");const[err,setErr]=useState("");const[tab,setTab]=useState("standings");
   const[selSeason,setSelSeason]=useState(null);const[modal,setModal]=useState(null);const[form,setForm]=useState({});const[msg,setMsg]=useState("");const[teamFilter,setTeamFilter]=useState("");
 
-  const [loadError,setLoadError]=useState(null);
-  useEffect(()=>{(async()=>{const defaults=DEFAULT();const result=await loadData();if(result.status==="ok"){const s=result.data;const histIds=new Set(defaults.seasons.filter(x=>x.status==="completed").map(x=>x.id));const activeSaved=s.seasons.filter(x=>!histIds.has(x.id));const histFromCode=defaults.seasons.filter(x=>x.status==="completed");setData({...s,seasons:[...histFromCode,...activeSaved]});}else if(result.status==="empty"){setData(defaults);}else{setLoadError(result.msg||"Could not connect to database");setData(defaults);}setLoading(false);})();},[]);
+  const [loadError,setLoadError]=useState(null);const [dbReady,setDbReady]=useState(false);
+  useEffect(()=>{(async()=>{const defaults=DEFAULT();const result=await loadData();if(result.status==="ok"){const s=result.data;const histIds=new Set(defaults.seasons.filter(x=>x.status==="completed").map(x=>x.id));const activeSaved=s.seasons.filter(x=>!histIds.has(x.id));const histFromCode=defaults.seasons.filter(x=>x.status==="completed");setData({...s,seasons:[...histFromCode,...activeSaved]});setDbReady(true);}else if(result.status==="empty"){setData(defaults);setDbReady(true);}else{setLoadError(result.msg||"Could not connect to database");setData(defaults);}setLoading(false);})();},[]);
 
   const season=data?.seasons.find(s=>s.id===selSeason)||data?.seasons.find(s=>s.status==="active")||data?.seasons[0];
-  const upd=fn=>{const scrollY=window.scrollY;const u=fn(data);setData(u);saveData(u);setTimeout(()=>window.scrollTo(0,scrollY),50);};
+  const upd=fn=>{if(!dbReady){flash("⚠ Database not connected. Changes not saved.");return;}const scrollY=window.scrollY;const u=fn(data);setData(u);saveData(u).then(()=>console.log("Saved to Supabase at",new Date().toISOString()));setTimeout(()=>window.scrollTo(0,scrollY),50);};
   const updSeason=fn=>upd(d=>({...d,seasons:d.seasons.map(s=>s.id===season.id?fn(s):s)}));
   const gmailCompose=(to,su,bo)=>window.open(`https://mail.google.com/mail/?view=cm&to=${encodeURIComponent(to)}&su=${encodeURIComponent(su)}&body=${encodeURIComponent(bo)}`,"_blank");
   const buildInvite=(em,tn,rl)=>{const t=data.inviteTemplate||{subject:"",body:""};return{subj:t.subject,body:t.body.replace(/\{\{role\}\}/g,rl||"member").replace(/\{\{team\}\}/g,tn||"the league").replace(/\{\{link\}\}/g,data.appUrl||"")};};
@@ -1082,7 +1089,7 @@ export default function App() {
     <div style={{padding:"8px 12px",overflowX:"auto",display:"flex",gap:4,borderBottom:"1px solid rgba(255,255,255,0.04)",background:"rgba(13,17,23,0.5)"}}>
       {tabs.map(t=><button key={t.id} onClick={()=>setTab(t.id)} style={{display:"flex",alignItems:"center",gap:6,padding:"8px 14px",border:"none",borderRadius:8,cursor:"pointer",fontSize:13,fontWeight:600,fontFamily:"'DM Sans',sans-serif",whiteSpace:"nowrap",background:tab===t.id?"rgba(0,200,150,0.12)":"transparent",color:tab===t.id?"#00C896":"#8892a4"}}><I n={t.icon} s={15}/>{t.label}</button>)}
     </div>
-    {loadError&&<div style={{margin:"12px 20px 0",background:"rgba(230,57,70,0.1)",borderRadius:10,padding:12,border:"1px solid rgba(230,57,70,0.3)"}}><div style={{color:"#E63946",fontSize:13,fontWeight:600}}>⚠ Database connection issue</div><div style={{color:"#E63946",fontSize:12,marginTop:4}}>Showing default data. Your recent changes may not be visible. Try refreshing.</div></div>}
+    {loadError&&<div style={{margin:"12px 20px 0",background:"rgba(230,57,70,0.15)",borderRadius:10,padding:14,border:"1px solid rgba(230,57,70,0.4)"}}><div style={{color:"#E63946",fontSize:14,fontWeight:700}}>⚠ Database Offline</div><div style={{color:"#E63946",fontSize:12,marginTop:4}}>Live data unavailable. Showing default data only. Admin changes are disabled.</div><div style={{marginTop:8}}><Btn sz="sm" v="danger" onClick={()=>window.location.reload()}>Retry Connection</Btn></div></div>}
     {msg&&<div style={{margin:"12px 20px 0",background:"rgba(0,200,150,0.1)",borderRadius:10,padding:12}}><div style={{color:"#00C896",fontSize:12}}>{msg}</div></div>}
     <div style={{padding:20,maxWidth:900,margin:"0 auto"}}>
 
