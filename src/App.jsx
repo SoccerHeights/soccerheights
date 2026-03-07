@@ -1051,8 +1051,8 @@ export default function App() {
 
   const isAdmin=role==="admin";
   const hasPlayoffs=season?.games.some(g=>g.phase==="playoff"&&g.h);
-  const tabs=isAdmin?[{id:"seasons",label:"Seasons",icon:"trophy"},{id:"teams",label:"Teams",icon:"users"},{id:"schedule",label:"Schedule",icon:"cal"},{id:"standings",label:"Standings",icon:"trophy"},hasPlayoffs&&{id:"bracket",label:"Playoffs",icon:"trophy"},{id:"invites",label:"Invites",icon:"mail"},{id:"email",label:"Email",icon:"send"},{id:"rules",label:"Rules",icon:"book"},{id:"settings",label:"Settings",icon:"settings"}].filter(Boolean)
-    :[{id:"seasons",label:"Seasons",icon:"trophy"},{id:"standings",label:"Standings",icon:"trophy"},{id:"schedule",label:"Schedule",icon:"cal"},hasPlayoffs&&{id:"bracket",label:"Playoffs",icon:"trophy"},{id:"rules",label:"Rules",icon:"book"}].filter(Boolean);
+  const tabs=isAdmin?[{id:"seasons",label:"Seasons",icon:"trophy"},{id:"teams",label:"Teams",icon:"users"},hasPlayoffs&&{id:"bracket",label:"Playoffs",icon:"trophy"},{id:"schedule",label:"Schedule",icon:"cal"},{id:"standings",label:"Standings",icon:"trophy"},{id:"invites",label:"Invites",icon:"mail"},{id:"email",label:"Email",icon:"send"},{id:"rules",label:"Rules",icon:"book"},{id:"settings",label:"Settings",icon:"settings"}].filter(Boolean)
+    :[{id:"seasons",label:"Seasons",icon:"trophy"},{id:"standings",label:"Standings",icon:"trophy"},hasPlayoffs&&{id:"bracket",label:"Playoffs",icon:"trophy"},{id:"schedule",label:"Schedule",icon:"cal"},{id:"rules",label:"Rules",icon:"book"}].filter(Boolean);
   const teamOpts=season?.teams.map(t=>({v:t.id,l:t.name}))||[];
   const tm={}; season?.teams.forEach(t=>{tm[t.id]=t;});
 
