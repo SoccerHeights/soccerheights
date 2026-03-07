@@ -904,12 +904,13 @@ const calcStandings = (season, group) => {
   const ids = new Set(season.teams.filter(t => !group || t.group === group).map(t => t.id));
   const st = {};
   season.teams.filter(t => ids.has(t.id)).forEach(t => { st[t.id] = {team:t,w:0,d:0,l:0,gf:0,ga:0,pts:0,gd:0,p:0,h2h:{}}; });
-  season.games.filter(g => g.done && (g.phase||"group") === "group" && ids.has(g.h) && ids.has(g.a)).forEach(g => {
-    const h=st[g.h], a=st[g.a]; if(!h||!a) return;
-    h.gf+=g.hs; h.ga+=g.as; h.p++; a.gf+=g.as; a.ga+=g.hs; a.p++;
-    if(g.hs>g.as){h.w++;a.l++;h.pts+=3;} else if(g.hs<g.as){a.w++;h.l++;a.pts+=3;} else{h.d++;a.d++;h.pts++;a.pts++;}
-    if(!h.h2h[g.a])h.h2h[g.a]=0; if(!a.h2h[g.h])a.h2h[g.h]=0;
-    if(g.hs>g.as)h.h2h[g.a]+=3; else if(g.hs<g.as)a.h2h[g.h]+=3; else{h.h2h[g.a]++;a.h2h[g.h]++;}
+  season.games.filter(g => g.done && (g.phase||"group") === "group" && (ids.has(g.h) || ids.has(g.a))).forEach(g => {
+    const h=st[g.h], a=st[g.a];
+    if(h){h.gf+=g.hs; h.ga+=g.as; h.p++;}
+    if(a){a.gf+=g.as; a.ga+=g.hs; a.p++;}
+    if(g.hs>g.as){if(h){h.w++;h.pts+=3;} if(a){a.l++;}} else if(g.hs<g.as){if(a){a.w++;a.pts+=3;} if(h){h.l++;}} else{if(h){h.d++;h.pts++;} if(a){a.d++;a.pts++;}}
+    if(h&&a){if(!h.h2h[g.a])h.h2h[g.a]=0; if(!a.h2h[g.h])a.h2h[g.h]=0;
+    if(g.hs>g.as)h.h2h[g.a]+=3; else if(g.hs<g.as)a.h2h[g.h]+=3; else{h.h2h[g.a]++;a.h2h[g.h]++;}}
   });
   Object.values(st).forEach(s=>{s.gd=s.gf-s.ga;});
   return Object.values(st).sort((a,b)=> b.pts!==a.pts?b.pts-a.pts : b.gd!==a.gd?b.gd-a.gd : (b.h2h[a.team.id]||0)-(a.h2h[b.team.id]||0));
