@@ -1102,42 +1102,47 @@ export default function App() {
       </div>}
 
       {tab==="bracket"&&season&&(()=>{
-        const poGames=season.games.filter(g=>g.phase==="playoff"&&g.h);
-        const qf=poGames.filter(g=>g.id.includes("qf")||g.id.match(/po\d+-[0-3]$/));
-        const sf=poGames.filter(g=>g.id.includes("sf")||g.id.match(/po\d+-sf/));
-        const final_=poGames.filter(g=>g.id.includes("final")||g.id.match(/po\d+-f$/));
-        const gs=(arr)=>arr.length?arr:qf.length===4?[qf.slice(0,2),qf.slice(2)]:qf.length>0?[qf]:[];
+        const poGames=season.games.filter(g=>g.phase==="playoff"&&g.h).sort((a,b)=>{const dd=new Date(a.date)-new Date(b.date);return dd!==0?dd:timeToMin(a.time)-timeToMin(b.time);});
+        if(poGames.length===0) return <div><h2 style={{fontSize:20,margin:"0 0 20px",color:"#fff",fontFamily:"'Bricolage Grotesque',sans-serif",textAlign:"center"}}>🏆 Playoff Bracket</h2><Card><p style={{color:"#8892a4",textAlign:"center",margin:0}}>No playoff games yet. Generate them from the Standings tab.</p></Card></div>;
+        const dates=[...new Set(poGames.map(g=>g.date))].sort();
+        let qf=[],sf=[],final_=[];
+        if(dates.length>=3){qf=poGames.filter(g=>g.date===dates[0]);sf=poGames.filter(g=>g.date===dates[1]);final_=poGames.filter(g=>g.date===dates[2]);}
+        else if(dates.length===2){const first=poGames.filter(g=>g.date===dates[0]);const second=poGames.filter(g=>g.date===dates[1]);if(first.length>=3){qf=first;sf=second.length>1?second.slice(0,-1):[];final_=second.length>1?[second[second.length-1]]:second;}else{sf=first;final_=second;}}
+        else{const all=poGames;if(all.length>=7){qf=all.slice(0,4);sf=all.slice(4,6);final_=all.slice(6);}else if(all.length>=4){qf=all.slice(0,4);sf=all.slice(4);}else{qf=all;}}
         const bracketGame=(g,small)=>{const ho=tm[g.h],aw=tm[g.a];if(!ho||!aw)return null;
-          return <div style={{background:"rgba(255,255,255,0.04)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:10,padding:small?"8px 10px":"10px 12px",marginBottom:6,minWidth:small?140:160}}>
+          return <div style={{background:"rgba(255,255,255,0.04)",border:g.done?"1px solid rgba(0,200,150,0.2)":"1px solid rgba(255,255,255,0.08)",borderRadius:10,padding:small?"8px 10px":"10px 12px",marginBottom:6,minWidth:small?140:160}}>
             <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:6,marginBottom:4}}>
               <div style={{display:"flex",alignItems:"center",gap:5}}><div style={{width:8,height:8,borderRadius:"50%",background:ho.color}}/><span style={{fontSize:small?11:12,color:g.done&&g.hs>g.as?"#00C896":"#e8ecf4",fontWeight:g.done&&g.hs>g.as?700:400}}>{ho.name}</span></div>
-              <span style={{fontSize:small?12:14,fontWeight:700,color:"#fff"}}>{g.done?g.hs:""}</span>
+              <span style={{fontSize:small?12:14,fontWeight:700,color:"#fff"}}>{g.done?g.hs:"-"}</span>
             </div>
             <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:6}}>
               <div style={{display:"flex",alignItems:"center",gap:5}}><div style={{width:8,height:8,borderRadius:"50%",background:aw.color}}/><span style={{fontSize:small?11:12,color:g.done&&g.as>g.hs?"#00C896":"#e8ecf4",fontWeight:g.done&&g.as>g.hs?700:400}}>{aw.name}</span></div>
-              <span style={{fontSize:small?12:14,fontWeight:700,color:"#fff"}}>{g.done?g.as:""}</span>
+              <span style={{fontSize:small?12:14,fontWeight:700,color:"#fff"}}>{g.done?g.as:"-"}</span>
             </div>
           </div>;};
-        const leftQF=qf.length>=4?qf.slice(0,2):qf.slice(0,Math.ceil(qf.length/2));
-        const rightQF=qf.length>=4?qf.slice(2):qf.slice(Math.ceil(qf.length/2));
-        const leftSF=sf.length>=2?[sf[0]]:sf.length===1?[sf[0]]:[];
+        const placeholder=(label)=><div style={{background:"rgba(255,255,255,0.02)",border:"1px dashed rgba(255,179,0,0.2)",borderRadius:10,padding:"10px 12px",marginBottom:6,minWidth:140,textAlign:"center"}}><span style={{color:"#8892a4",fontSize:11}}>{label}</span></div>;
+        const leftQF=qf.slice(0,Math.ceil(qf.length/2));
+        const rightQF=qf.slice(Math.ceil(qf.length/2));
+        const leftSF=sf.length>=1?[sf[0]]:[];
         const rightSF=sf.length>=2?[sf[1]]:[];
-        const colStyle={display:"flex",flexDirection:"column",justifyContent:"space-around",gap:12};
+        const colStyle={display:"flex",flexDirection:"column",justifyContent:"space-around",gap:16,minHeight:leftQF.length>1?200:100};
         return <div>
           <h2 style={{fontSize:20,margin:"0 0 20px",color:"#fff",fontFamily:"'Bricolage Grotesque',sans-serif",textAlign:"center"}}>🏆 Playoff Bracket — {season.name}</h2>
           <div style={{overflowX:"auto",padding:"10px 0"}}>
-          <div style={{display:"flex",alignItems:"center",justifyContent:"center",gap:8,minWidth:600}}>
-            <div style={colStyle}>{leftQF.map(g=><div key={g.id}>{bracketGame(g,true)}</div>)}</div>
-            {leftSF.length>0&&<div style={colStyle}>{leftSF.map(g=><div key={g.id}>{bracketGame(g,true)}</div>)}</div>}
-            <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:8,padding:"0 12px"}}>
-              <div style={{fontSize:32}}>🏆</div>
-              {final_.length>0?final_.map(g=><div key={g.id}>{bracketGame(g,false)}</div>)
-                :<div style={{background:"rgba(255,255,255,0.04)",border:"1px dashed rgba(255,179,0,0.3)",borderRadius:10,padding:"12px 16px",textAlign:"center",minWidth:160}}><span style={{color:"#8892a4",fontSize:12}}>Final</span></div>}
+          <div style={{display:"flex",alignItems:"center",justifyContent:"center",gap:8,minWidth:qf.length>2?620:400}}>
+            {leftQF.length>0&&<div style={colStyle}>{leftQF.map(g=><div key={g.id}>{bracketGame(g,true)}</div>)}</div>}
+            <div style={colStyle}>{leftSF.length>0?leftSF.map(g=><div key={g.id}>{bracketGame(g,true)}</div>):qf.length>2?[placeholder("Semi 1")]:[]}
             </div>
-            {rightSF.length>0&&<div style={colStyle}>{rightSF.map(g=><div key={g.id}>{bracketGame(g,true)}</div>)}</div>}
-            <div style={colStyle}>{rightQF.map(g=><div key={g.id}>{bracketGame(g,true)}</div>)}</div>
+            <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:8,padding:"0 8px"}}>
+              <div style={{fontSize:36}}>🏆</div>
+              {final_.length>0?final_.map(g=><div key={g.id}>{bracketGame(g,false)}</div>)
+                :placeholder("Final")}
+              {final_.length>0&&final_[0].done&&<div style={{color:"#FFB300",fontWeight:700,fontSize:13,marginTop:4}}>{(()=>{const g=final_[0];return g.hs>g.as?tm[g.h]?.name:g.as>g.hs?tm[g.a]?.name:"Draw";})()}</div>}
+            </div>
+            <div style={colStyle}>{rightSF.length>0?rightSF.map(g=><div key={g.id}>{bracketGame(g,true)}</div>):qf.length>2?[placeholder("Semi 2")]:[]}
+            </div>
+            {rightQF.length>0&&<div style={colStyle}>{rightQF.map(g=><div key={g.id}>{bracketGame(g,true)}</div>)}</div>}
           </div></div>
-          {qf.length===0&&<Card><p style={{color:"#8892a4",textAlign:"center",margin:0}}>No playoff games yet. Generate them from the Standings tab.</p></Card>}
         </div>;
       })()}
 
