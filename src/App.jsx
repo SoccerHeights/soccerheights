@@ -1121,8 +1121,8 @@ export default function App() {
             </div>
           </div>;};
         const placeholder=(label)=><div style={{background:"rgba(255,255,255,0.02)",border:"1px dashed rgba(255,179,0,0.2)",borderRadius:10,padding:"10px 12px",marginBottom:6,minWidth:140,textAlign:"center"}}><span style={{color:"#8892a4",fontSize:11}}>{label}</span></div>;
-        const leftQF=qf.slice(0,Math.ceil(qf.length/2));
-        const rightQF=qf.slice(Math.ceil(qf.length/2));
+        const leftQF=qf.length===4?[qf[0],qf[3]]:qf.slice(0,Math.ceil(qf.length/2));
+        const rightQF=qf.length===4?[qf[1],qf[2]]:qf.slice(Math.ceil(qf.length/2));
         const leftSF=sf.length>=1?[sf[0]]:[];
         const rightSF=sf.length>=2?[sf[1]]:[];
         const colStyle={display:"flex",flexDirection:"column",justifyContent:"space-around",gap:16,minHeight:leftQF.length>1?200:100};
