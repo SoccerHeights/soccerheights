@@ -1043,8 +1043,9 @@ export default function App() {
     <Card style={{textAlign:"left"}}><div style={{fontSize:13,fontWeight:700,color:"#8892a4",textTransform:"uppercase",marginBottom:14}}>Admin Login</div><Inp label="Password" type="password" value={pw} onChange={v=>{setPw(v);setErr("");}} ph="Enter admin password"/>{err&&<div style={{color:"#E63946",fontSize:12,marginBottom:8}}>{err}</div>}<Btn v="secondary" onClick={()=>{if(pw===data.adminPw){setRole("admin");setErr("");setTab("seasons");}else setErr("Incorrect password");}} style={{width:"100%"}}>Sign In as Admin</Btn></Card></div></div>;
 
   const isAdmin=role==="admin";
-  const tabs=isAdmin?[{id:"seasons",label:"Seasons",icon:"trophy"},{id:"teams",label:"Teams",icon:"users"},{id:"schedule",label:"Schedule",icon:"cal"},{id:"standings",label:"Standings",icon:"trophy"},{id:"invites",label:"Invites",icon:"mail"},{id:"email",label:"Email",icon:"send"},{id:"rules",label:"Rules",icon:"book"},{id:"settings",label:"Settings",icon:"settings"}]
-    :[{id:"seasons",label:"Seasons",icon:"trophy"},{id:"standings",label:"Standings",icon:"trophy"},{id:"schedule",label:"Schedule",icon:"cal"},{id:"rules",label:"Rules",icon:"book"}];
+  const hasPlayoffs=season?.games.some(g=>g.phase==="playoff"&&g.h);
+  const tabs=isAdmin?[{id:"seasons",label:"Seasons",icon:"trophy"},{id:"teams",label:"Teams",icon:"users"},{id:"schedule",label:"Schedule",icon:"cal"},{id:"standings",label:"Standings",icon:"trophy"},hasPlayoffs&&{id:"bracket",label:"Playoffs",icon:"trophy"},{id:"invites",label:"Invites",icon:"mail"},{id:"email",label:"Email",icon:"send"},{id:"rules",label:"Rules",icon:"book"},{id:"settings",label:"Settings",icon:"settings"}].filter(Boolean)
+    :[{id:"seasons",label:"Seasons",icon:"trophy"},{id:"standings",label:"Standings",icon:"trophy"},{id:"schedule",label:"Schedule",icon:"cal"},hasPlayoffs&&{id:"bracket",label:"Playoffs",icon:"trophy"},{id:"rules",label:"Rules",icon:"book"}].filter(Boolean);
   const teamOpts=season?.teams.map(t=>({v:t.id,l:t.name}))||[];
   const tm={}; season?.teams.forEach(t=>{tm[t.id]=t;});
 
@@ -1099,6 +1100,46 @@ export default function App() {
         :<StandingsTable rows={calcStandings(season,null)}/>}
         {isAdmin&&season.status!=="completed"&&<div style={{marginTop:20,textAlign:"center"}}><Btn icon="trophy" onClick={()=>{setForm({playoffSize:"8",playoffDate:"",playoffTime:"09:00 AM",playoffLoc:"James J Walker"});setModal("genPlayoffs");}}>Generate Playoffs</Btn></div>}
       </div>}
+
+      {tab==="bracket"&&season&&(()=>{
+        const poGames=season.games.filter(g=>g.phase==="playoff"&&g.h);
+        const qf=poGames.filter(g=>g.id.includes("qf")||g.id.match(/po\d+-[0-3]$/));
+        const sf=poGames.filter(g=>g.id.includes("sf")||g.id.match(/po\d+-sf/));
+        const final_=poGames.filter(g=>g.id.includes("final")||g.id.match(/po\d+-f$/));
+        const gs=(arr)=>arr.length?arr:qf.length===4?[qf.slice(0,2),qf.slice(2)]:qf.length>0?[qf]:[];
+        const bracketGame=(g,small)=>{const ho=tm[g.h],aw=tm[g.a];if(!ho||!aw)return null;
+          return <div style={{background:"rgba(255,255,255,0.04)",border:"1px solid rgba(255,255,255,0.08)",borderRadius:10,padding:small?"8px 10px":"10px 12px",marginBottom:6,minWidth:small?140:160}}>
+            <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:6,marginBottom:4}}>
+              <div style={{display:"flex",alignItems:"center",gap:5}}><div style={{width:8,height:8,borderRadius:"50%",background:ho.color}}/><span style={{fontSize:small?11:12,color:g.done&&g.hs>g.as?"#00C896":"#e8ecf4",fontWeight:g.done&&g.hs>g.as?700:400}}>{ho.name}</span></div>
+              <span style={{fontSize:small?12:14,fontWeight:700,color:"#fff"}}>{g.done?g.hs:""}</span>
+            </div>
+            <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",gap:6}}>
+              <div style={{display:"flex",alignItems:"center",gap:5}}><div style={{width:8,height:8,borderRadius:"50%",background:aw.color}}/><span style={{fontSize:small?11:12,color:g.done&&g.as>g.hs?"#00C896":"#e8ecf4",fontWeight:g.done&&g.as>g.hs?700:400}}>{aw.name}</span></div>
+              <span style={{fontSize:small?12:14,fontWeight:700,color:"#fff"}}>{g.done?g.as:""}</span>
+            </div>
+          </div>;};
+        const leftQF=qf.length>=4?qf.slice(0,2):qf.slice(0,Math.ceil(qf.length/2));
+        const rightQF=qf.length>=4?qf.slice(2):qf.slice(Math.ceil(qf.length/2));
+        const leftSF=sf.length>=2?[sf[0]]:sf.length===1?[sf[0]]:[];
+        const rightSF=sf.length>=2?[sf[1]]:[];
+        const colStyle={display:"flex",flexDirection:"column",justifyContent:"space-around",gap:12};
+        return <div>
+          <h2 style={{fontSize:20,margin:"0 0 20px",color:"#fff",fontFamily:"'Bricolage Grotesque',sans-serif",textAlign:"center"}}>🏆 Playoff Bracket — {season.name}</h2>
+          <div style={{overflowX:"auto",padding:"10px 0"}}>
+          <div style={{display:"flex",alignItems:"center",justifyContent:"center",gap:8,minWidth:600}}>
+            <div style={colStyle}>{leftQF.map(g=><div key={g.id}>{bracketGame(g,true)}</div>)}</div>
+            {leftSF.length>0&&<div style={colStyle}>{leftSF.map(g=><div key={g.id}>{bracketGame(g,true)}</div>)}</div>}
+            <div style={{display:"flex",flexDirection:"column",alignItems:"center",gap:8,padding:"0 12px"}}>
+              <div style={{fontSize:32}}>🏆</div>
+              {final_.length>0?final_.map(g=><div key={g.id}>{bracketGame(g,false)}</div>)
+                :<div style={{background:"rgba(255,255,255,0.04)",border:"1px dashed rgba(255,179,0,0.3)",borderRadius:10,padding:"12px 16px",textAlign:"center",minWidth:160}}><span style={{color:"#8892a4",fontSize:12}}>Final</span></div>}
+            </div>
+            {rightSF.length>0&&<div style={colStyle}>{rightSF.map(g=><div key={g.id}>{bracketGame(g,true)}</div>)}</div>}
+            <div style={colStyle}>{rightQF.map(g=><div key={g.id}>{bracketGame(g,true)}</div>)}</div>
+          </div></div>
+          {qf.length===0&&<Card><p style={{color:"#8892a4",textAlign:"center",margin:0}}>No playoff games yet. Generate them from the Standings tab.</p></Card>}
+        </div>;
+      })()}
 
       {tab==="schedule"&&season&&<div>
         <h2 style={{fontSize:20,margin:"0 0 16px",color:"#fff",fontFamily:"'Bricolage Grotesque',sans-serif"}}>Schedule — {season.name}</h2>
