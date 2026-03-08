@@ -1113,15 +1113,15 @@ export default function App() {
         const poGames=season.games.filter(g=>g.phase==="playoff"&&g.h&&g.a&&tm[g.h]&&tm[g.a]).sort((a,b)=>{const dd=new Date(a.date)-new Date(b.date);return dd!==0?dd:timeToMin(a.time)-timeToMin(b.time);});
         if(poGames.length===0) return <div><h2 style={{fontSize:20,margin:"0 0 20px",color:"#fff",fontFamily:"'Bricolage Grotesque',sans-serif",textAlign:"center"}}>🏆 Playoff Bracket</h2><Card><p style={{color:"#8892a4",textAlign:"center",margin:0}}>No playoff games yet. Generate them from the Standings tab.</p></Card></div>;
         let qf=[],sf=[],final_=[];
-        const hasRounds=poGames.some(g=>g.round);
-        if(hasRounds){
-          qf=poGames.filter(g=>g.round==="qf");
-          sf=poGames.filter(g=>g.round==="sf");
-          final_=poGames.filter(g=>g.round==="final");
-          const untagged=poGames.filter(g=>!g.round);
-          if(qf.length===0&&untagged.length>0){qf=untagged.slice(0,4);if(untagged.length>4&&sf.length===0)sf=untagged.slice(4,6);if(untagged.length>6&&final_.length===0)final_=untagged.slice(6,7);}
+        const tagged=poGames.filter(g=>g.round);
+        const untagged=poGames.filter(g=>!g.round);
+        sf=tagged.filter(g=>g.round==="sf");
+        final_=tagged.filter(g=>g.round==="final");
+        qf=tagged.filter(g=>g.round==="qf");
+        if(untagged.length>0){
+          if(qf.length===0){qf=untagged;}
+          else{untagged.forEach(g=>{if(sf.length<2&&qf.length>=4)sf.push(g);else if(final_.length<1&&sf.length>=2)final_.push(g);else qf.push(g);});}
         }
-        else{const n=poGames.length;if(n>=7){qf=poGames.slice(0,4);sf=poGames.slice(4,6);final_=poGames.slice(6,7);}else if(n>=5){qf=poGames.slice(0,4);sf=poGames.slice(4);}else if(n===4){qf=poGames.slice(0,4);}else if(n===3){sf=poGames.slice(0,2);final_=poGames.slice(2);}else if(n===2){sf=poGames.slice(0,2);}else{final_=poGames;}}
         const matchCard=(g,label)=>{if(!g)return null;const ho=tm[g.h],aw=tm[g.a];if(!ho||!aw)return null;const hWin=g.done&&(g.hs>g.as||(g.pks&&g.pkh>g.pka));const aWin=g.done&&(g.as>g.hs||(g.pks&&g.pka>g.pkh));
           return <div style={{background:"rgba(255,255,255,0.04)",border:g.done?"1px solid rgba(0,200,150,0.2)":"1px solid rgba(255,255,255,0.08)",borderRadius:12,padding:"12px 14px",width:"100%"}}>
             {label&&<div style={{fontSize:10,color:"#8892a4",textTransform:"uppercase",fontWeight:700,letterSpacing:"0.05em",marginBottom:8}}>{label}</div>}
