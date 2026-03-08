@@ -1109,8 +1109,8 @@ export default function App() {
         {isAdmin&&season.status!=="completed"&&<div style={{marginTop:20,textAlign:"center"}}><Btn icon="trophy" onClick={()=>{setForm({playoffSize:"8",playoffDate:"",playoffTime:"09:00 AM",playoffLoc:"James J Walker"});setModal("genPlayoffs");}}>Generate Playoffs</Btn></div>}
       </div>}
 
-      {tab==="bracket"&&season&&(()=>{
-        const poGames=season.games.filter(g=>g.phase==="playoff"&&g.h).sort((a,b)=>{const dd=new Date(a.date)-new Date(b.date);return dd!==0?dd:timeToMin(a.time)-timeToMin(b.time);});
+      {tab==="bracket"&&season&&(()=>{try{
+        const poGames=season.games.filter(g=>g.phase==="playoff"&&g.h&&g.a&&tm[g.h]&&tm[g.a]).sort((a,b)=>{const dd=new Date(a.date)-new Date(b.date);return dd!==0?dd:timeToMin(a.time)-timeToMin(b.time);});
         if(poGames.length===0) return <div><h2 style={{fontSize:20,margin:"0 0 20px",color:"#fff",fontFamily:"'Bricolage Grotesque',sans-serif",textAlign:"center"}}>🏆 Playoff Bracket</h2><Card><p style={{color:"#8892a4",textAlign:"center",margin:0}}>No playoff games yet. Generate them from the Standings tab.</p></Card></div>;
         let qf=[],sf=[],final_=[];
         const hasRounds=poGames.some(g=>g.round);
@@ -1151,7 +1151,7 @@ export default function App() {
           <div style={{textAlign:"center",margin:"16px 0"}}><div style={{fontSize:48}}>🏆</div>
           {final_.length>0&&final_[0].done&&<div style={{color:"#FFB300",fontWeight:700,fontSize:16,marginTop:4,fontFamily:"'Bricolage Grotesque',sans-serif"}}>{(()=>{const g=final_[0];return g.hs>g.as?tm[g.h]?.name:g.as>g.hs?tm[g.a]?.name:"Draw";})()}</div>}</div>
         </div>;
-      })()}
+      }catch(e){console.error("Bracket error:",e);return <div><h2 style={{fontSize:20,margin:"0 0 20px",color:"#fff",textAlign:"center"}}>🏆 Playoff Bracket</h2><Card><p style={{color:"#E63946",textAlign:"center",margin:0}}>Error loading bracket. Check console for details.</p></Card></div>;}})()}
 
       {tab==="schedule"&&season&&<div>
         <h2 style={{fontSize:20,margin:"0 0 16px",color:"#fff",fontFamily:"'Bricolage Grotesque',sans-serif"}}>Schedule — {season.name}</h2>
