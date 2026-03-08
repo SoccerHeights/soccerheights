@@ -1122,7 +1122,7 @@ export default function App() {
           if(qf.length===0&&untagged.length>0){qf=untagged.slice(0,4);if(untagged.length>4&&sf.length===0)sf=untagged.slice(4,6);if(untagged.length>6&&final_.length===0)final_=untagged.slice(6,7);}
         }
         else{const n=poGames.length;if(n>=7){qf=poGames.slice(0,4);sf=poGames.slice(4,6);final_=poGames.slice(6,7);}else if(n>=5){qf=poGames.slice(0,4);sf=poGames.slice(4);}else if(n===4){qf=poGames.slice(0,4);}else if(n===3){sf=poGames.slice(0,2);final_=poGames.slice(2);}else if(n===2){sf=poGames.slice(0,2);}else{final_=poGames;}}
-        const matchCard=(g,label)=>{const ho=tm[g.h],aw=tm[g.a];if(!ho||!aw)return null;const hWin=g.done&&(g.hs>g.as||(g.pks&&g.pkh>g.pka));const aWin=g.done&&(g.as>g.hs||(g.pks&&g.pka>g.pkh));
+        const matchCard=(g,label)=>{if(!g)return null;const ho=tm[g.h],aw=tm[g.a];if(!ho||!aw)return null;const hWin=g.done&&(g.hs>g.as||(g.pks&&g.pkh>g.pka));const aWin=g.done&&(g.as>g.hs||(g.pks&&g.pka>g.pkh));
           return <div style={{background:"rgba(255,255,255,0.04)",border:g.done?"1px solid rgba(0,200,150,0.2)":"1px solid rgba(255,255,255,0.08)",borderRadius:12,padding:"12px 14px",width:"100%"}}>
             {label&&<div style={{fontSize:10,color:"#8892a4",textTransform:"uppercase",fontWeight:700,letterSpacing:"0.05em",marginBottom:8}}>{label}</div>}
             <div style={{display:"flex",alignItems:"center",justifyContent:"space-between",marginBottom:6}}>
@@ -1144,7 +1144,7 @@ export default function App() {
         return <div>
           <h2 style={{fontSize:20,margin:"0 0 8px",color:"#fff",fontFamily:"'Bricolage Grotesque',sans-serif",textAlign:"center"}}>🏆 Playoff Bracket</h2>
           <div style={{fontSize:12,color:"#8892a4",textAlign:"center",marginBottom:20}}>{season.name}</div>
-          {qf.length>0&&<>{sectionTitle("Quarter-Finals")}<div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}><div>{matchCard(leftQF[0],"QF1")}</div><div>{matchCard(rightQF[0],"QF2")}</div>{leftQF[1]&&<div>{matchCard(leftQF[1],"QF4")}</div>}{rightQF[1]&&<div>{matchCard(rightQF[1],"QF3")}</div>}</div><div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginTop:4}}><div style={{textAlign:"center",fontSize:10,color:"#8892a4"}}> ↓ SF1</div><div style={{textAlign:"center",fontSize:10,color:"#8892a4"}}> ↓ SF2</div></div></>}
+          {qf.length>0&&<>{sectionTitle("Quarter-Finals")}<div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>{leftQF[0]&&<div>{matchCard(leftQF[0],"QF1")}</div>}{rightQF[0]&&<div>{matchCard(rightQF[0],"QF2")}</div>}{leftQF[1]&&<div>{matchCard(leftQF[1],"QF4")}</div>}{rightQF[1]&&<div>{matchCard(rightQF[1],"QF3")}</div>}</div><div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8,marginTop:4}}><div style={{textAlign:"center",fontSize:10,color:"#8892a4"}}> ↓ SF1</div><div style={{textAlign:"center",fontSize:10,color:"#8892a4"}}> ↓ SF2</div></div></>}
           {(sf.length>0||qf.length>2)&&<>{sectionTitle("Semi-Finals")}<div style={{display:"grid",gridTemplateColumns:"1fr 1fr",gap:8}}>{leftSF.length>0?leftSF.map(g=><div key={g.id}>{matchCard(g,"SF1")}</div>):<div>{placeholderCard("Semi-Final 1")}</div>}{rightSF.length>0?rightSF.map(g=><div key={g.id}>{matchCard(g,"SF2")}</div>):<div>{placeholderCard("Semi-Final 2")}</div>}</div></>}
           {sectionTitle("Final")}
           <div style={{maxWidth:300,margin:"0 auto"}}>{final_.length>0?final_.map(g=><div key={g.id}>{matchCard(g,"Final")}</div>):placeholderCard("Final")}</div>
