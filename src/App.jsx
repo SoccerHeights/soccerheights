@@ -1107,6 +1107,8 @@ export default function App() {
         {(season.groups||[]).length>1?(season.groups||[]).map(g=> <StandingsTable key={g} rows={calcStandings(season,g)} title={`Group ${g}`}/>)
         :<StandingsTable rows={calcStandings(season,null)}/>}
         {isAdmin&&season.status!=="completed"&&<div style={{marginTop:20,textAlign:"center"}}><Btn icon="trophy" onClick={()=>{setForm({playoffSize:"8",playoffDate:"",playoffTime:"09:00 AM",playoffLoc:"James J Walker"});setModal("genPlayoffs");}}>Generate Playoffs</Btn></div>}
+        {season.fixturesUrl&&<div style={{marginTop:16,textAlign:"center"}}><a href={season.fixturesUrl} target="_blank" rel="noopener noreferrer" style={{display:"inline-flex",alignItems:"center",gap:8,padding:"10px 20px",borderRadius:10,background:"rgba(3,169,244,0.12)",color:"#03A9F4",fontSize:14,fontWeight:600,textDecoration:"none",border:"1px solid rgba(3,169,244,0.3)",fontFamily:"'DM Sans',sans-serif"}}><I n="book" s={16}/>View Fixtures PDF</a></div>}
+        {isAdmin&&<div style={{marginTop:12,textAlign:"center"}}><Btn sz="sm" v="ghost" icon="edit" onClick={()=>{setForm({fixturesUrl:season.fixturesUrl||""});setModal("editFixtures");}}>Edit Fixtures Link</Btn></div>}
       </div>}
 
       {tab==="bracket"&&season&&(()=>{try{
@@ -1243,5 +1245,7 @@ export default function App() {
       <Inp label="Location" value={form.playoffLoc||""} onChange={v=>setForm({...form,playoffLoc:v})}/>
       <Btn onClick={()=>{if(!form.playoffDate)return;const games=matchups.map((m,i)=>{const baseMin=timeToMin(form.playoffTime||"09:00 AM")+i*45;const h=Math.floor(baseMin/60);const mn=baseMin%60;const ampm=h>=12?"PM":"AM";const h12=h>12?h-12:h===0?12:h;const timeStr=`${h12}:${String(mn).padStart(2,"0")} ${ampm}`;return{id:`po${Date.now()}-${i}`,h:m[0]?.team.id,a:m[1]?.team.id,date:form.playoffDate,time:timeStr,loc:form.playoffLoc||"",hs:null,as:null,done:false,phase:"playoff",round:"qf",videoUrl:""};});updSeason(s=>({...s,games:[...s.games,...games]}));flash(`Generated ${games.length} playoff games!`);setModal(null);}}>Generate {matchups.length} Games</Btn></>;
     })()}</Modal>
+
+    <Modal open={modal==="editFixtures"} onClose={()=>setModal(null)} title="Fixtures PDF Link"><Inp label="URL (Bitly, Google Drive, etc.)" value={form.fixturesUrl||""} onChange={v=>setForm({...form,fixturesUrl:v})} ph="https://bit.ly/..."/><Btn onClick={()=>{updSeason(s=>({...s,fixturesUrl:form.fixturesUrl||""}));setModal(null);}}>Save</Btn></Modal>
   </div>;
 }
