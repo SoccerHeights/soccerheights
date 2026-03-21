@@ -1168,8 +1168,9 @@ export default function App() {
           const compGrp=completed.filter(g=>(g.phase||"group")==="group");
           const compPo=completed.filter(g=>g.phase==="playoff");
           const secStyle={fontSize:16,margin:"24px 0 12px",fontFamily:"'Bricolage Grotesque',sans-serif"};
-          return <>{upcoming.length>0&&<><h3 style={{...secStyle,color:"#00C896"}}>Upcoming Games</h3>{upGrp.map(g=><GameCard key={g.id} g={g} admin={isAdmin}/>)}{upPo.length>0&&<><h4 style={{fontSize:14,margin:"16px 0 8px",color:"#FFB300"}}>🏆 Playoffs</h4>{upPo.map(g=><GameCard key={g.id} g={g} admin={isAdmin}/>)}</>}</>}
-          {completed.length>0&&<><h3 style={{...secStyle,color:"#8892a4"}}>Completed Games</h3>{completed.map(g=><GameCard key={g.id} g={g} admin={isAdmin}/>)}</>}
+          const gamesWithDates=(games)=>{let lastDate="";return games.map(g=>{const showDate=g.date!==lastDate;lastDate=g.date;return <div key={g.id}>{showDate&&<div style={{display:"flex",alignItems:"center",gap:10,margin:"16px 0 8px"}}><div style={{flex:1,height:1,background:"rgba(255,255,255,0.08)"}}/><span style={{fontSize:11,color:"#8892a4",fontWeight:600,whiteSpace:"nowrap"}}>{fmtDate(g.date)}</span><div style={{flex:1,height:1,background:"rgba(255,255,255,0.08)"}}/></div>}<GameCard g={g} admin={isAdmin}/></div>;});};
+          return <>{upcoming.length>0&&<><h3 style={{...secStyle,color:"#00C896"}}>Upcoming Games</h3>{gamesWithDates(upGrp)}{upPo.length>0&&<><h4 style={{fontSize:14,margin:"16px 0 8px",color:"#FFB300"}}>🏆 Playoffs</h4>{gamesWithDates(upPo)}</>}</>}
+          {completed.length>0&&<><h3 style={{...secStyle,color:"#8892a4"}}>Completed Games</h3>{gamesWithDates(completed)}</>}
           {allGames.length===0&&<Card><p style={{color:"#8892a4",textAlign:"center",margin:0}}>No games yet.</p></Card>}</>;})()}
       </div>}
 
