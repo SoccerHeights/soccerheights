@@ -1066,10 +1066,11 @@ export default function App() {
     const hCount=weekendCounts[g.h+"|"+wk]||0;
     const aCount=weekendCounts[g.a+"|"+wk]||0;
     const multiGame=!g.done&&(teamFilter?(teamFilter===g.h?hCount>1:teamFilter===g.a?aCount>1:false):(hCount>1||aCount>1));
+    const multiTeams=!g.done&&!teamFilter?[hCount>1?ho.name:null,aCount>1?aw.name:null].filter(Boolean):[];
     return <Card style={{marginBottom:10}}>
       <div style={{display:"flex",justifyContent:"space-between",alignItems:"center",flexWrap:"wrap",gap:8}}>
         <div style={{fontSize:12,color:"#8892a4",display:"flex",alignItems:"center",gap:6}}><I n="cal" s={14}/>{fmtDate(g.date)} · {g.time}</div>
-        <div style={{display:"flex",gap:6}}>{multiGame&&<Badge c="#03A9F4">⚡ 2 games</Badge>}{g.phase==="playoff"&&<Badge c="#FFB300">Playoff</Badge>}{g.done?<Badge c="#00C896">Final</Badge>:<Badge c="#F4A261">Upcoming</Badge>}</div>
+        <div style={{display:"flex",gap:6,flexWrap:"wrap"}}>{multiGame&&<Badge c="#03A9F4">⚡ {teamFilter?`2 games`:multiTeams.join(" & ")+` 2 games`}</Badge>}{g.phase==="playoff"&&<Badge c="#FFB300">Playoff</Badge>}{g.done?<Badge c="#00C896">Final</Badge>:<Badge c="#F4A261">Upcoming</Badge>}</div>
       </div>
       {g.loc&&<div style={{fontSize:12,color:"#a0a8b8",display:"flex",alignItems:"center",gap:5,marginTop:4}}><I n="pin" s={13}/>{g.loc}{g.duration&&<span style={{color:"#8892a4"}}> · {g.duration} min</span>}</div>}
       <div style={{display:"flex",alignItems:"center",justifyContent:"center",gap:16,marginTop:14,fontSize:15,fontWeight:600,color:"#e8ecf4"}}>{(()=>{const hWin=g.done&&(g.hs>g.as||(g.pks&&g.pkh>g.pka));const aWin=g.done&&(g.as>g.hs||(g.pks&&g.pka>g.pkh));return<>
