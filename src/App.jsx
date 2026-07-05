@@ -1042,6 +1042,8 @@ export default function App() {
   const buildInvite=(em,tn,rl)=>{const t=data.inviteTemplate||{subject:"",body:""};return{subj:t.subject,body:t.body.replace(/\{\{role\}\}/g,rl||"member").replace(/\{\{team\}\}/g,tn||"the league").replace(/\{\{link\}\}/g,data.appUrl||"")};};
   const flash=(m,ms=6000)=>{setMsg(m);setTimeout(()=>setMsg(""),ms);};
   const exportInvites=()=>{const d=[["Email","Team","Role","Status","Sent"],...data.invites.map(i=>[i.email,i.team,i.role,i.status,i.sent])];const wb=XLSX.utils.book_new();XLSX.utils.book_append_sheet(wb,XLSX.utils.aoa_to_sheet(d),"Invites");XLSX.writeFile(wb,"invites.xlsx");};
+  const getWeekend=(dateStr)=>{if(!dateStr)return"";const d=new Date(dateStr+"T12:00:00");if(isNaN(d))return"";const day=d.getDay();const sat=new Date(d);sat.setDate(d.getDate()-day+6);if(day===0)sat.setDate(d.getDate()-1);const sun=new Date(sat);sun.setDate(sat.getDate()+1);return sat.toISOString().split("T")[0]+"|"+sun.toISOString().split("T")[0];};
+  const weekendCounts=useMemo(()=>{if(!season)return{};const counts={};season.games.filter(g=>!g.done&&g.date&&g.h&&g.a).forEach(g=>{const wk=getWeekend(g.date);if(!wk)return;[g.h,g.a].forEach(tid=>{if(!tid)return;const key=tid+"|"+wk;counts[key]=(counts[key]||0)+1;});});return counts;},[season]);
 
   if(loading) return <div style={{minHeight:"100vh",background:"#0d1117",display:"flex",alignItems:"center",justifyContent:"center"}}><div style={{color:"#00C896",fontSize:18}}>Loading...</div></div>;
   if(!role) return <div style={{minHeight:"100vh",background:"linear-gradient(160deg,#0d1117 0%,#131a24 50%,#0d1117 100%)",display:"flex",alignItems:"center",justifyContent:"center",padding:20,fontFamily:"'DM Sans',sans-serif"}}>
@@ -1057,8 +1059,6 @@ export default function App() {
   const teamOpts=season?.teams.map(t=>({v:t.id,l:t.name}))||[];
   const tm={}; season?.teams.forEach(t=>{tm[t.id]=t;});
 
-  const getWeekend=(dateStr)=>{const d=new Date(dateStr+"T12:00:00");const day=d.getDay();const sat=new Date(d);sat.setDate(d.getDate()-day+6);if(day===0)sat.setDate(d.getDate()-1);const sun=new Date(sat);sun.setDate(sat.getDate()+1);return sat.toISOString().split("T")[0]+"|"+sun.toISOString().split("T")[0];};
-  const weekendCounts=useMemo(()=>{if(!season)return{};const counts={};season.games.filter(g=>!g.done).forEach(g=>{const wk=getWeekend(g.date);[g.h,g.a].forEach(tid=>{const key=tid+"|"+wk;counts[key]=(counts[key]||0)+1;});});return counts;},[season]);
 
   const GameCard = ({g,admin}) => {
     const ho=tm[g.h],aw=tm[g.a]; if(!ho||!aw) return null;
